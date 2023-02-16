@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML Space Basic Page</title>
+</head>
+<body>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+
+<form>
+	<table border="1" align="center">
+		<tr>
+			<td>아이디</td>
+			<td>
+				<input type="text" size="30" maxlength="10" placeholder="(최소6~최대10, 숫자와 알파벳만 사용)&nbsp;">
+			</td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td>
+				<input type="password" name="password" maxlength="10" size="11">(최소6~최대10, 숫자와 알파벳만 사용)&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td>비밀번호 확인</td>
+			<td>
+				<input type="password" name="passwordconfirm" maxlength="10" size="11">(최소6~최대10, 숫자와 알파벳만 사용)&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td>주민번호</td>
+			<td>
+				<input type="text" name="juminfront" size="6">-<input type="password" name="juminend" size="6">
+			</td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td>
+				<input type="radio" name="gender" value="male" />남자
+				<input type="radio" name="gender" value="female" />여자
+			</td>
+		</tr>
+		<tr>
+			<td>전화번호</td>
+			<td>
+				<input type="tel" name="tel1" size="2">-<input type="tel" name="tel2" size="4">-<input type="tel" name="tel3" size="4">
+			</td>
+		</tr>
+		<tr>
+			<td>이메일</td>
+			<td>
+				<input type="text" name="email" size="10">@
+				<select>
+					<option selected="selected">메일주소선택</option>
+					<option value="hanmail">hanmail.co.kr</option>
+					<option value="naver">naver.com</option>
+					<option value="daum">daum.co.kr</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>취미</td>
+			<td>
+				<input type="checkbox" name="checkbox" value="checkbox" />등산
+				<input type="checkbox" name="checkbox" value="checkbox" />독서
+				<input type="checkbox" name="checkbox" value="checkbox" />스키
+				<input type="checkbox" name="checkbox" value="checkbox" />음악
+				<input type="checkbox" name="checkbox" value="checkbox" />영화
+			</td>
+		</tr>
+		<tr>
+			<td>자기소개</td>
+			<td>
+				<textarea rows = "5" cols = "50" name = "description" placeholder="자유롭게 250자 이내"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="입력" />
+				<input type="reset" value="취소" />
+			</td>
+			
+		</tr>
+	</table>
+</form>
+
+</body>
+</html>

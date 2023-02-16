@@ -1,0 +1,110 @@
+230216
+HTML : Hyper Text Markup Language
+
+Href : hyper reference
+<a href = "">blabla</a>
+
+리로드 안될땐 캐시된 이미지 및 파일 -> 삭제
+
+인터넷 url에 /index.html 넣어도 결과 차이가 없음.
+웹서버에 특정 주소가 실행되도록 환경설정이 알아서 되있기때문
+
+이클립스 서버를 끄고 톰캣 서버를 start한다
+C:\apache-tomcat-9.0.71-windows-x64\apache-tomcat-9.0.71\webapps\ROOT
+에 있는 index.jsp가 디폴트로 되어있어서 http://localhost:8080/ 로 가면 자동으로 저 파일이 열린다.
+C:\apache-tomcat-9.0.71-windows-x64\apache-tomcat-9.0.71\conf
+server.xml 그리고 web.xml 파일에 appBase="webapps" 가 기본 경로로 잡혀있음
+
+톰캣 서버를 하나 만들고 이클립스에 추가로 등록한 서버를 사용하는것(8080 등록 후 8800 사용)
+
+이클립스의 Servers server.xml에 맨 밑. docBase 에 HTML5 가 써있음
+워크스페이스 전체에 적용되는것.
+HTML5 에만 적용하고 싶다면 WEB-INF에 xml 파일 만들어서 적용시킬 수 있음
+
+id : identifier 식별자
+고유한 값. 중복된 값 사용하지 말자. 중복해도 명시적으로 오류나진 않음
+
+<b> 볼드체와 <i> 이태리체 많이 씀
+
+ul : Unordered List 목록의 순서가 없는 개념
+	● disk ○ circle □ square
+ol : Ordered List 순서가 있음
+	1. a.  i.
+	2. b. ii.
+	3. c. iii.
+li : 단독으로 사용 안함
+
+table
+tr : 표에 행 삽입
+th : 표의 제목 셀 생성. bold center
+td : 표의 일반 셀 생성
+
+cellpadding : 셀 내부의 여백
+cellspacing : 셀 사이의 간격
+셀 바깥쪽 여백(margin)
+
+colspan 행 병합
+lowspan 열 병합
+
+브라우저 종류에따라 mp3 ogg 지원 차이(지금은 대부분 다 지원)
+
+<video width="320" controls="controls" autoplay muted>
+	<source src="Wildlife.mp4" type="video/mp4">
+</video>
+
+controls="controls" 를 넣어야 보이더라
+
+&nbsp;
+	공백문자
+
+<form name="" action="" enctype="" method="">
+form 객체를 다룰 수 있음. 그 객체의 이름은 name 안에.
+form양식에서 입력한 정보를 어디론가 전달할때. 누구한테 전달할지 action에 명시(url, 문서이름)
+파일 첨부하는 경우 ex) enctype="multipart 혹은 form-data"
+method는 get 아니면 post 둘중 하나 사용. 생략시 디폴트는 get
+
+통신시 http 프로토콜 사용
+get방식은 header 내부에 데이터 담아서 보냄
+	(고정 길. 전달할 정보의 양 제한됨. 간단한 정보. 노출되어도 상관없는거에 사용)
+	주소창에 정보 확인 가능
+post방식은 body에 담음
+	프로토콜을 열어서 봐야 내용 확인 가능
+	로그인 정보, 회원가입 정보 등
+
+input
+type="submit" 입력받은 정보를 서버로 전송(method의 전송방식으로 action에 정의되있는 녀석한테)
+
+name이 url에 q 혹은 oq에 사용됨
+
+checkbox 같은 type에서 동일한 name을 사용하면 자동으로 배열 형태로 만들어져 전송됨
+
+radio의 경우 name을 다르게 주게 되면 별개로 취급. 중복선택 가능해짐(남 여 같은 경우 name을 같게 해야 중복선택 안됨)
+get 방식으로 선택하면 url에 ?gender=male
+
+태크 끝부분 / 은 종료를 의미. 습관화 하자
+
+div : 블록 형식으로 공간 분할(행 전체 공간 다 쓴다)
+span : 인라인 형식으로 공간 분할(본인이 갖고있는 너비 공간만 사용)
+
+시맨틱 : 의미적인
+	특정 태그에 의미를 부여
+태그로써 기능은 없음. 문서 구조를 이해하는데 도움을 줄 뿐
+<header>, <nav>, <aside> 등등
+
+textarea 태그는 붙여서써야함
+<textarea rows = "5" cols = "50" name = "description"></textarea>
+
+<textarea rows = "5" cols = "50" name = "description">
+</textarea>
+이런식으로 쓰면 커서가 자유롭게 클릭가능하고 클릭한 위치부터 글씨가 써짐
+
+익스플로러에서만 가능하다고함
+STYLE="ime=mode:inactive" 영어
+active : 한글
+
+required : 필수입력사항. 입력 안할시 submit 할때 경고메세지가 뜸
+
+html에 숫자만 입력되게 하는것은 없음. 자바스크립트로 구현하면 됨
+
+type="number" 하게 되면 한글 입력은 되나 제대로 처리되지는 않음
+https://hianna.tistory.com/413

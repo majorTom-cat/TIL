@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name="" action="" enctype="multipart/form-data" method="get/post">
+	<!--  사용자가 입력하는 입력 양식 -->
+		<input type="text" name="text" value="text test" /><br />
+		<!--  button 은 기능은 없음. submit과의 차이 -->
+		
+		<input type="password" name="password" value="password test" /><br />
+		<input type="file" name="file" value="file test" /><br />
+		<input type="checkbox" name="checkbox" value="checkbox test" />등산
+		<input type="checkbox" name="checkbox" value="checkbox test" />게임
+		<input type="checkbox" name="checkbox" value="checkbox test" />노래<br />
+		<input type="radio" name="gender" value="male" />남자
+		<input type="radio" name="gender" value="female" />여자<br />
+		
+		<!--  보이지 않는 입력 양식 -->
+		<input type="hidden" name="hidden" value="hidden" />히든<br />
+		
+		<!--  버튼 -->
+		<input type="button" value="버튼" /><br />
+		<input type="reset" value="리셋" /><br />
+		<input type="submit" value="submit 전송" /><br />
+		<input type="image" src="http://placehold.it/100x100" />
+		<input type="image" src="testing_image.jpg" width="100" height="100"/>
+	</form>
+	
+	<br />
+	<table>
+		<tr>
+			<td><label for="username">이름</lable></td>
+			<td><input id="username" type="text" name="username" /></td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td>
+				<input id="man" type="radio" name="gender" value="m" />
+				<label for="man">남자</lable>
+				<input id="woman" type="radio" name="gender" value="w" />
+				<label for="woman">여자</label>
+			</td>
+		</tr>
+		
+		<tr align="center"><td colspan="2"><input type="submit" value="가입" width="300"/></td></tr>
+	</table>
+
+
+	<br />
+	<form>
+		<select>
+			<option>김밥</option>
+			<option>떡볶이</option>
+			<option>순대</option>
+			<option>어묵</option>
+		</select>
+		<select multiple size="2">
+			<option>김밥</option>
+			<option>떡볶이</option>
+			<option>순대</option>
+			<option>어묵</option>
+		</select>
+		<select>
+			<optgroup label="HTML555">
+				<option>Multimedia Tag</option>
+				<option>Connectivity</option>
+				<option>Device Access</option>
+			</optgroup>
+			<optgroup label="CSS333">
+				<option>Animation</option>
+				<option>3D Transform</option>
+			</optgroup>
+		</select>
+	</form>
+	
+	<br />
+	<form>
+		<fieldset>
+			<legend>입력 양식</legend>
+			<table>
+				<tr>
+					<td><label for="name">이름</label>
+					<td><input id="name" type="text" /></td>
+				</tr>
+				<tr>
+					<td><label for="mail">이메일</label>
+					<td><input id="mail" type="email" /></td>
+				</tr>			
+			</table>
+			<input type="submit" />
+		</fieldset>
+	</form>
+	
+	<!--  교재에 없는 내용 -->
+	<form>
+		학과 : <input type="text" name="st_department" list="depList"><br>
+		<datalist id="depList">
+			<option value="컴퓨터공학과"></option>
+			<option value="영어영문과"></option>
+			<option value="경영학과"></option>
+			<option value="사회체육과"></option>
+		</datalist>
+		
+		숫자 <input type="number" name="points" min="0" max="100" step="10" value="30"><br />
+		날짜 <input type="date" name="bday"><br />
+		색상 <input type="color" name="favcolor"><br />
+		범위 <input type="range" name="points" min="0" max="10"><br />
+		날짜및 시간 <input type="datetime-local" name="bdaytime"><br />
+		이메일 <input type="email" name="email"><br />
+		검색 <input type="search" name="googlesearch"><br />
+		전화번호 <input type="tel" name="usrtel"><br />
+		사이트 <input type="url" name="homepage">
+	</form>
+
+</body>
+</html>
