@@ -1,0 +1,82 @@
+230217
+[레노버] ThinkBook 15 G4 ABA-21DL0000KR [R5-5625U/8GB/256GB/FD] [기본제품]
+컴퓨존에서 499,000 원의 행사가격으로 구매를 하였고 8GB 램을 추가로 증정받았다.
+윈도우10을 설치하였다. 기분이 좋다.
+
+인라인(in-line)
+내부스타일
+외부스타일
+
+* : 모든 요소
+
+빨간색 : ff0000(R : 00, G : 00, B : 00) 256*256*256 개의 조합
+
+margin : 순서 익혀두기 padding도.
+요소 4개 -> 위 부터 시계방향
+요소 2개 -> 상하  좌우
+
+후손은 공백
+#header h1
+
+table 만들면 tbody가 자동으로 생김
+
+<input disabled="disabled">
+
+144p
+ul {overflow :hidden; }
+넘치는 부분은 숨기겠다
+
+ul {list-style : none;  dick나 square 같은 기호 없애겠다
+    floar : left; 왼쪽부터 배치
+
+margin은 바깥쪽. 안쪽 여백이 padding
+
+키워드 block inline
+
+border: 20px dashed black;
+
+block 네 방향 다
+inline 좌우만
+
+block 요소 : <div>, <h1>, <p>, <ul>, <ol>, <form>
+inline 요소 : <span>, <a>, <img>
+
+169p 체크
+
+글꼴 설정시 공백있으면 ' ' 로 묶어줘야 하나의 글꼴로 인식 ex : 'Times New Roman'
+공백 없으면 그냥 쓴다. ex : Arial
+
+194p
+절대위치(absolute)
+- 조상이 없으면 body 요소를 기준
+- 조상이 있으면 조상을 기준으로 절대적 위치를 기준으로 배치
+
+넘치는건 숨기는 기능 overflow: hidden
+overflow: visible(default), scroll, hidden, auto
+
+상대위치(relative)
+- 해당 HTML 요소의 기본 위치를 기준으로 위치를 설정
+- 해당 HTML 요소의 기본 위치 : 정적 위치 지정방식일때 결정되는 위치
+
+정적위치(static)
+- 웹페이지의 흐름에 따라 순서대로 요소들을 위치시키는 방식
+
+고정위치(fixed)
+- 뷰포트를 기준으로 위치를 지정하는 방식
+- 웹페이지가 스크롤 되어도 고정위치로 지정된 요소는 항상 같은 곳에 위치
+
+static이 기본 포지션(따로 기술하지 않아도)
+
+float 0217.html
+일단 동위 선택자(~)
+- 해당 요소와 동위 관계에 있으며, 해당 요소보다 뒤에 존재하는 특정 타입의 요소를 모두 선택
+
+인접 동위 선택자(+)
+- 해당 요소와 동위 관계에 있으며, 해당 요소의 바로 뒤에 존재하는 특정 타입의 요소를 모두 선택
+
+
+보더박스
+전체 크기 = border-box = content + border + padding + margin
+컨텐츠 크기 = border-box - border - padding - margin
+
+counter 로 시작하는게 있음

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+	 	 #box {
+			background-color: red;
+			width: 100px;
+			height: 50px;
+			margin: 10pz;
+			
+			display: inline-block;
+			}
+			
+		.a {font-size: 32px;}
+		.b {font-size: 2em;}
+		.c {font-size: large;}
+		.d {font-size: small;}
+		
+		.font_arial {font-family: '없는 폰트', Arial;}
+		.font_roman {font-family: 'Times New Roman', Arial;}
+			
+			
+		.button {
+			width: 150px;
+			height: 70px;
+			background-color: #FF6A00;
+			border: 10px solid #FFFFFF;
+			border-radius: 30px;
+			
+			/* 가로위치, 세로위치, 흐릿한 정도, (스프레드. 양수면 확장, 음수면 축소), 그림자 색상 */
+			box-shadow: 5px 5px 5px #A9A9A9;
+			}
+			
+		
+		.button > a {
+			display: block;
+			
+			line-height: 70px; /* 줄간격 */
+			
+			text-decoration: none; /* 밑줄없애기. 밑줄 넣고싶으면 underline -> 디폴트값임 */
+			}
+			
+		.decLetterSpacing { letter-spacing: -3px;} /* 줄 간격 조정 */
+		.incLetterSpacing { letter-spacing: 10px;}
+		
+		.incLetterSpacing { word-spacing: 10px;} /*단어 사이 간격*/
+		
+		
+	</style>
+
+</head>
+<body>
+	<p>의미 없는 더미 객체</p>
+	<span>더미 객체</span>
+	<div id="box">대상 객체</div>
+	<span>더미 객체</span>
+	<p>의미 없는 더미 객체</p>
+	
+	<br><br />
+	<h1>(h1) fasdsadsaffsaf</h1>
+	<p class="a">(a)fasdsadsaffsaf</p>
+	<p class="b">(b)fasdsadsaffsaf</p>
+	<p class="c">(c)fasdsadsaffsaf</p>
+	<p>fasdsadsaffsaf</p>
+	<p class="d">(d)fasdsadsaffsaf</p>
+	
+	<br />
+	<p class="font_arial">Lorem ipsum</p>
+	<p class="font_roman">Lorem ipsum</p>	
+	
+	
+	<div class="button">
+		<a href="#" class="font" align="center">Click</a>
+	</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Float style Property 0217</title>
+	<style>
+		img {
+			float: right;
+		}
+		p {clear: both;}
+		
+		a:link, a:visited {
+			background-color: #FFA500;
+			color: maroon;
+			padding: 15px 25px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+		}
+		a:hover {background-color: #FF4500;}
+		a:active {background-color: pink;}
+		
+		
+		div {
+			border:3px solid #F08080;}
+		div + p { background-color: #FFE4E1;} /* ~ 혹은 + */
+		
+		
+		div.first{ border: 3px solid #008000;}
+		div.second{ border: 3px solid #FFD700;}
+		p:first-of-type {
+			color: red;
+			font-weight: bold;
+		}
+		
+		
+		input {
+			width:100%;
+			padding: 10px 20px;
+			margin: 5px 0;
+			box-sizing: border-box;
+		}
+		input[type="text"] {
+			border: solid 2px #FFE4B5;
+			-webkit-transition: 0.5s; /* 웹 표준화 되며 안씀 */
+			transition: 2s; /* 변화되는데 걸리는 시간 */
+			outline: none;
+		}
+		input[type="text"]:focus {border: solid 4px #D2691E;}
+		input[type="password"] {border: solid 1px black;}
+		input[type="password"]:focus {background-color: #E0FFFF;}
+		
+		body {text-align: center;}
+		.tooltip {
+			position: relative;
+			display: inline-block;
+			margin: auto;
+		}
+		.tooltip .tooltip-content {
+			visibility: hidden;
+			width: 220px;
+			background-color: orange;
+			padding: 0;
+			text-align: center;
+			position: absolute;
+			z-index: 1;
+			top: -60px;
+			right: 10%;
+		}
+		.tooltip:hover .tooltip-content {visibility: visible;}
+	</style>
+
+</head>
+<body>
+	<img src="testing_image.jpg" />
+	<p>Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem
+		ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem ipsum dolor sit
+		amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, Lorem
+		ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit
+	</p>
+	
+	<h1>링크를 활용한 버튼</h1>
+	<p><a href="http://www.daum.net" target="_blank">Daum</a></p>
+	
+	<h1>일반 동위 선택자를 이용한 선택</h1>
+	<p>이 p 태그는 div 태그의 sibling 이지만 div 태그보다 앞에 나옵니다!</p>
+	<div>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+	</div>
+	<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+	<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+	
+	
+	<h1>일반 동위 선택자를 이용한 선택</h1>
+	<div>
+		<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+		<div>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+		</div>
+		<p>이 p 태그는 div 태그 바로 뒤에 나오는 sibling 입니다!</p>
+		<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+	</div>
+	<p>이 p 태그는 div 태그 바로 뒤에 나오는 sibling 입니다!</p>
+	<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+	
+	
+	<h1>:first-of-type을 이용한 선택</h1>
+	<div class="first">
+		<p>이 p 태그는 div 태그의 child 요소 중에서 첫 번째로 등장하는 p 태그입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+		<div class="second">
+			<p>이 p 태그는 div 태그의 child 요소 중에서 첫 번째로 등장하는 p 태그입니다!</p>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+		</div>
+	</div>
+	
+	
+	<h1>포커스가 있는 input 요소의 스타일 설정</h1>
+	<form>
+		사용자 : <br>
+		<input type="text" name="username"><br>
+		비밀번호 : <br>
+		<input type="password" name="password">
+	</form>
+	
+	
+	<h1>툴팁이 나타나는 위치 설정</h1>
+	<br><br><br>
+	<div class="tooltip">
+		<span>여기에 마우스를 올려보세요!</span>
+		<div class="tooltip-content">
+			<p>왼쪽 상단에 나타나는 툴팁!</p>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
