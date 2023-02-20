@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* media_attribute */
+
+@media screen {
+			body {background-color: red;}
+			}
+			
+@media print {
+			body {background-color: green;}
+			}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0220 Problem05</title>
+
+	<style>
+		ul {
+			width: auto;
+			height: 50px;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			background: dimgray;
+		}
+		
+		li {
+			width: 50px;
+			margin: 0;
+			float: left;
+			width: 100px;
+			text-align: left;
+		}
+		
+		li a {
+			display: block;
+			color: white;
+			text-align: left;
+			padding: 14px 10px;
+			text-decoration: none;
+			background-color: dimgrey;
+		}
+		
+		li > a:hover {
+			background-color: red;
+			width: 100px;
+		}
+		
+		div a {display: hidden;}
+		
+		
+		.dropdown:hover .dropdown-content{ 
+			display: block;
+		}
+		
+		.dropdown-content {
+			width: 150px;
+			display: none;
+			box-shadow: 3px 3px 3px 3px lightgray;
+		}
+		
+		.dropdown-content a:hover {
+			background-color: lightgray;
+		}
+		
+		.dropdown-content a {
+			color: black;
+			display: block;
+			background-color: white;
+		}
+		
+	</style>
+
+
+</head>
+<body>
+
+	<ul>
+		<li class="dropdown">
+			<a href="#home">Home</a>
+			<div class="dropdown-content">
+				<a href="#">Home 1</a>
+				<a href="#">Home 2</a>
+				<a href="#">Home 3</a>
+			</div>
+		</li>
+		
+		<li class="dropdown">
+			<a href="#news">News</a>
+			<div class="dropdown-content">
+				<a href="#">News 1</a>
+				<a href="#">News 2</a>
+				<a href="#">News 3</a>
+			</div>
+		</li>
+		
+		<li class="dropdown">
+			<a href="#link">Dropdown</a>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+				<a href="#">Link 3</a>
+			</div>
+		</li>
+	</ul>
+
+</body>
+</html>

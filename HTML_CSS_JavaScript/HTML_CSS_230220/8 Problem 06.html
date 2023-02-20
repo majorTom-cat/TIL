@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>8 0220 Problem06</title>
+
+<style>
+* {
+	list-style-type: none;
+	text-decoration: none;
+}
+
+body {
+	width: 960px;
+	margin: auto;
+	overflow: hidden;
+}
+
+h1 {
+	clear: both;
+	text-align: center;
+	text-shadow: 2px 2px gray;
+}
+
+#page_header {
+	width: 900px;
+	height: 100px;
+	display: block;
+}
+
+#page_header li {
+	float: left;
+	padding: 20px;
+	text-align: left;
+	font-size: 130%;
+}
+
+#page_header ul {
+	padding-left: 0px;
+}
+
+#page_header ul li{
+	padding-left: 0px;
+}
+
+#posts {
+	width: 700px;
+	height: 300px;
+	float: left;
+	display: block;
+}
+
+#posts .post h2 {
+	text-align: left;
+}
+
+#posts .post p {
+	text-align: left;
+}
+
+#sidebar {
+	width: 200px;
+	height: 300px;
+	display: inline-block;
+	text-align: left;
+	font-size: 110%;
+	margin-top: 30px;
+}
+
+#sidebar ul {
+	padding-left: 0px;
+}
+
+#sidebar h3 {
+	text-align: left;
+}
+
+#sidebar li {
+	text-align: left;
+	margin: 5px 0px;
+}
+
+#page_footer {
+	width: 960px;
+	height: 200px;
+	clear: both;
+	text-align: center;
+	margin-top: 50px;
+}
+
+#page_footer li {
+	display: inline-block;
+	padding: 20px;
+}
+
+@media screen and (max-width: 767px) { /* 스마트폰 사이즈에서는 전부 해제한다. */
+	body {
+		width: auto;
+	}
+	#menu {
+		width: auto;
+		float: none;
+	}
+	#section {
+		width: auto;
+		float: none;
+	}
+}
+
+#page_footer {
+	width: 960px;
+	height: 200px;
+	clear: both;
+	text-align: center;
+	margin-top: 80px;
+}
+
+#page_footer li {
+	display: inline-block;
+}
+
+@media screen and (max-width: 767px) { /* 스마트폰 사이즈에서는 전부 해제한다. */
+	body {
+		width: auto;
+	}
+	#menu {
+		width: auto;
+		float: none;
+	}
+	#section {
+		width: auto;
+		float: none;
+	}
+}
+</style>
+
+</head>
+<body>
+	<header id="page_header">
+		<h1>HTML5</h1>
+		<nav>
+			<ul>
+				<li><a href="#">HTML5 API</a></li>
+				<li><a href="#">CSS3</a></li>
+				<li><a href="#">jQueryMobile</a></li>
+				<li><a href="#">PhoneGap</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section id="posts">
+		<article class="post">
+			<header>
+				<h2>HTML5 소개</h2>
+			</header>
+			<p>HTML5 FDSAFDSGSDAGSDGSDAGGSDAGSDGEWSGASEGg gsdag G SDAGSDAGSDAG GSFDGDSAGSDG
+				gdsaGSDGSDAGSDAGSDGASGHWREAGARGREAGREAGAREGAWEGAWSE HTML5
+				FDSAFDSGSDAGSDGSDAGGSDAGSDGEWSGASEGg gsdag G SDAGSDAGSDAG GSFDGDSAGSDG
+				gdsaGSDGSDAGSDAGSDGASGHWREAGARGREAGREAGAREGAWEGAWSE</p>
+			<p>HTML5 FDSAFDSGSDAGSDGSDAGGSDAGSDGEWSGASEGg gsdag G SDAGSDAGSDAG GSFDGDSAGSDG
+				gdsaGSDGSDAGSDAGSDGASGHWREAGARGREAGREAGAREGAWEGAWSE HTML5
+				FDSAFDSGSDAGSDGSDAGGSDAGSDGEWSGASEGg gsdag G SDAGSDAGSDAG GSFDGDSAGSDG
+				gdsaGSDGSDAGSDAGSDGASGHWREAGARGREAGREAGAREGAWEGAWSE HTML5
+				FDSAFDSGSDAGSDGSDAGGSDAGSDGEWSGASEGg gsdag G SDAGSDAGSDAG GSFDGDSAGSDG
+				gdsaGSDGSDAGSDAGSDGASGHWREAGARGREAGREAGAREGAWEGAWSE</p>
+		</article>
+	</section>
+
+	<aside id="sidebar">
+		<nav>
+			<h3>다른 글들</h3>
+			<ul>
+				<li><a href="#">Sencha Touch</a></li>
+				<li><a href="#">Java</a></li>
+				<li><a href="#">JSP</a></li>
+				<li><a href="#">Spring</a></li>
+				<li><a href="#">Android</a></li>
+				<li><a href="#">IOS</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<footer id="page_footer">
+		<p>&copy; 2023 삼성멀티캠퍼스</p>
+		<nav>
+			<ul>
+				<li><a href="#">홈페이지</a></li>
+				<li><a href="#">회사 소개</a></li>
+				<li><a href="#">서비스 항목</a></li>
+				<li><a href="#">개인정보 보호 정책</a></li>
+			</ul>
+		</nav>
+	</footer>
+
+</body>
+</html>

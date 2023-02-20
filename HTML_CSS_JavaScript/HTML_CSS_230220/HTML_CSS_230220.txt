@@ -1,0 +1,56 @@
+counter-reset: fieldsets; 카운터 초기화 작업
+
+7장
+example_1
+수평으로 요소정렬
+1. 자손에게 float 속성을 지정하고 부모의 overflow 속성에는 hidden 키워드를 적용
+2. 혹은 수평으로 정렬하고 싶은 대상의 양쪽 아래에 div태그를 배치하고 이 태그의 clear속성을 both로 지정하는 방법이 있다.
+
+example-2
+
+example_4
+자손의 position 속성에 absolute 키워드를 적용하려면 부모에 height 속성을 입력한다
+left right 헷갈리지 않게 주의
+
+example_5
+
+example_6
+
+example_7
+white-space: nowrap; 자동 줄바꿈 하지 않겠다
+text-overflos: ellipsis;
+
+8장
+at_media_rule
+@media screen - 주로 사용
+	화면
+
+@media print : 배경 그래픽 옵션을 미지정했으면 보이지 않음
+	프린트
+
+media_feature
+
+프로젝트 할때 뷰포트 설계하는건 좋지만 크기별로 하려 하면 시간 많이걸릴수있음 하나라도 제대로
+
+orientation
+세로 너비가 좁아지면 세로. 늘어나면 가로로 판단
+
+메인화면만 2가지로 만들어보는 정도(가로 세로)
+
+pattern 1, 2, 3
+
+
+8 problem 06을 하며 footer을 가운데 정렬하고 싶었다.
+float: left로 하면 한 줄에 나오지만 왼쪽으로 정렬되었고 float 대신 display: inline-block으로 하니 한 줄에 가운데정렬되어 나왔다.
+
+text-align: justify; 양쪽 정렬
+
+[과제]
+개인이 관심을 가지는 주제를 가지고 개인 홈페이지를 만든다. 최소한 한페이지 이상으로 구성하며
+메인페이지 파일명은 반드시 index.html로 한다. 한페이지 이상인 경우 index.html에서 링크를 만들어
+연결하도록 구성한다.
+
+제출일자 : 2월 23일 11시 59분까지 MLP 과제제출 게시판.  MLP 강의개별과제제출 파일명 제목 다 이름으로
+제출방법 : 화면을 구성하는 모든 파일을 본인 이름을 압축해서 제출한다. (예, 홍길동.zip)
+
+리액트 8~9일 정도 쓸듯
