@@ -34,7 +34,8 @@ media_feature
 
 orientation
 세로 너비가 좁아지면 세로. 늘어나면 가로로 판단
-
+세로  orientation : portrait
+가로  orientation : landscape
 메인화면만 2가지로 만들어보는 정도(가로 세로)
 
 pattern 1, 2, 3
