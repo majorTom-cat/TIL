@@ -1,5 +1,22 @@
 자바스크립트는 세미콜론을 생략해도 오류가 뜨진 않음
 
+자바와 자바스크립트의 차이점
+https://velog.io/@peration/%EC%9E%90%EB%B0%94%EC%99%80-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90
+https://developerpitstop.com/why-do-java-and-javascript-have-a-similar-name/
+https://www.java.com/ko/download/help/java_javascript.html
+
+var과 let의 사용 차이
+https://poiemaweb.com/es6-block-scope
+https://www.freecodecamp.org/korean/news/var-let-constyi-caijeomeun/
+https://velog.io/@dev_dowon/JS-%EC%84%A0%EC%96%B8%EC%9E%90-%EC%97%B0%EA%B5%AC#let---%EC%97%B0%EA%B5%AC-1--%EC%84%A0%EC%96%B8-%EB%B0%8F-%ED%95%A0%EB%8B%B9
+결론 : 헷갈리면 let, const만 쓰자
+
+자바스크립트는 ES6에서 도입된 let, const를 포함하여 모든 선언(var, let, const, function, function*, class)을 호이스팅한다.
+호이스팅(Hoisting)이란, var 선언문이나 function 선언문 등을 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성을 말한다.
+하지만 var 키워드로 선언된 변수와는 달리 let 키워드로 선언된 변수를 선언문 이전에 참조하면 참조 에러(ReferenceError)가 발생한다.
+이는 let 키워드로 선언된 변수는 스코프의 시작에서 변수의 선언까지 일시적 사각지대(Temporal Dead Zone; TDZ)에 빠지기 때문이다.
+변수는 선언 -> 초기화 -> 할당 의 세 단계에 걸쳐 생성되며 var 변수는 이 세 단계가 한번에 이루어짐.
+
 window.alert("Hello JavaScript .. !");
 브라우저 객체중 window : 웹브라우저 자체를 가리킴.
 
@@ -42,7 +59,7 @@ parseFloot : 수치로된 문자열을 실수형으로 변환
 
 <body> 에서
 <p id="text"> 구구단 출력</p>
-str 에 태그들을 다 += 한 뒤 ( str += "<tr>";)
+str 에 태그들을 다 += 한 뒤 (ex : str += "<tr>";)
 var gugudan = document.getElementById("text");
 gugudan.innerHTML = str;
 gugudan.innerText = str; ==> 다 텍스트 형태로 출력해버림
@@ -59,6 +76,7 @@ var은 함수나 그 내부 범위
 3. 화살표 함수 : => 를 사용하여 정의하는 함수
 
 보통 head에 함수 정의. body에서 호출
+https://velog.io/@takeknowledge/script-%ED%83%9C%EA%B7%B8%EB%8A%94-%EC%96%B4%EB%94%94%EC%97%90-%EC%9C%84%EC%B9%98%ED%95%B4%EC%95%BC-%ED%95%A0%EA%B9%8C%EC%9A%94
 
 5 globalNum
 {} 내부의 num이 선언되기 전이므로 undefined
