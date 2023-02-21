@@ -1,0 +1,38 @@
+폰트어썸 사이트
+https://fontawesome.com/
+
+cdn 링크 모음
+https://fontawesome.com/
+
+아이콘이 안뜰때
+https://blog.naver.com/PostView.naver?blogId=virq&logNo=222016294061&parentCategoryNo=&categoryNo=&viewDate=&isShowPopularPosts=false&from=postList
+https://velog.io/@remon/Font-Awesome-Error-fas-fa-solid
+Font Awesome이 버전 5로 업데이트 되면서 사용법이 복잡해졌다고 한다. 유료화가 되면서 스타일을 5가지로 분리했고, 2가지는 무료, 3가지는 유료로 사용할 수 있게 바뀌었다고 한다.
+
+[ 유료 ]
+Regular
+<i class="far fa-camera"></i>
+Light
+<i class="fal fa-camera"></i>
+Duoton
+<i class="fad fa-camera"></i>
+[ 무료 ]
+Solid
+<i class="fas fa-camera"></i>
+Brands
+<i class="fab fa-font-awesome"></i>
+
+Fas!!
+버전 5일때 fa-solid를 fas로 표현한 거였다.
+현재는 버전 6다.
+
+fa : Font Awesome의 약자
+s : solid
+r : Regular
+l : Light
+d : Duotone
+b : Brands
+
+아이콘 크기 조절
+https://multifidus.tistory.com/167
+fa-2x ~ fa-5x
