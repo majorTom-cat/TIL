@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>13 jumin</title>
+
+<script>
+	function jumin_check() {
+		var jumin = document.input_form.ju1.value + "-" + document.input_form.ju2.value;
+		if (input_check(jumin))
+		{
+			if (check_jumin(jumin))
+				alert(jumin + " (O)");
+			else 
+				alert(jumin + " (X)");
+		
+		} else alert(jumin + " (X)");
+	} // jumin_check() 메소드의 끝 ==================================================
+	
+	/*function jumin_check(formdata) {
+		alert(formdata.ju1.value + "-"+ formdata.ju2.value);
+	}*/
+		
+	function check_jumin(ju) {
+		let w = 2;
+		let hap = 0;	
+			
+		for (let i = 0; i < ju.length - 1; i++) {
+			if (i == 6) // '-' 은 합계 계산에서 스킵
+				continue;
+
+			hap += parseInt(ju.substring(i, i + 1)) * w; // w: 가중치
+			w++;
+			if (w == 10)
+				w = 2; // w가 9다음은 2이므로....
+		}
+
+		let chk = 11 - hap % 11;
+		if (chk == 10)
+			chk = 0;
+		else if (chk == 11)
+			chk = 1;
+
+		if (chk == parseInt(ju.substring(13, 14)))
+			return true;
+		else
+			return false;
+		} // check_jumin 메소드의 끝 ===============================================
+		
+	function input_check(str) {
+			let ch;
+
+			if (str.length !== 14) // 입력받은 문자열이 14자리인지 검사
+				return false;
+
+			// 문자열을 전달 받아 문자열 길이만큼 한문자씩 검사
+			for (let i = 0; i < str.length; i++) {
+
+				ch = str.charAt(i); // 문자열에서 한문자씩 추출
+				if (i == 6) // '-' 인지 검사
+				{
+					if (ch !== '-')
+						return false;
+				} else if (i == 7) // 성별 값 검사
+					{
+						if (!(ch == '1' || ch == '2' || ch == '3' || ch == '4'))
+							return false;
+					} else if (ch < '0' || ch > '9') // ch 가 숫자인지 검사(유니코드로 비교)
+						return false;
+			}
+			return true;
+
+		} // input_check 메소드의 끝 ===============================================
+</script>
+<style>
+	body {background-color: black;}
+</style>
+
+</head>
+<body>
+	<form name="input_form" action="jumin_check.jsp" method="post" )>
+		<input type="text" size="6" maxlength="6" name="ju1" required>- <input
+			type="text" size="7" maxlength="7" name="ju2" required
+		> <input type="button" value="체크" onclick="jumin_check()">
+	</form>
+
+	<!--  
+	<form name="input_form" action="jumin_check.jsp" method="post" )>
+		<input type="text" size="6" maxlength="6" name="ju1">-
+		<input type="text" size="7" maxlength="7" name="ju2">
+		<input type="button" value="체크" onclick="jumin_check(this.form)">
+	</form> -->
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function callTenTimes(callback) {
+		for (var i = 0; i < 10; i++) {
+			callback();
+		}
+		
+	};
+	
+	var callback = function() {
+		alert('함수 호출');
+	};
+	
+	callTenTimes(callback);
+	
+	// 익명함수로도 많이 사용
+	callTenTimes(function() {
+		alert('함수 호출');
+	});
+</script>
+
+
+</head>
+<body>
+
+
+</body>
+</html>

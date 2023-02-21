@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>11 push</title>
+</head>
+<body>
+
+	<h1>Array 메소드</h1>
+
+	<script>
+		var arr = [ 1, true, "JavaScript" ];
+
+		document.write(arr.length + "<br>");
+		arr.push("자바스크립트"); // 마지막 위치에 추가됨
+		document.write(arr.length + "<br>");
+		document.write(arr + "<br>");
+		arr.push(2, "거짓"); // 2 위치가 아닌 2와 "거짓" 추가하는것
+		document.write(arr.length + "<br>");
+		document.write(arr + "<br><br>");
+
+		document.write(arr.length + "<br>");
+		document.write(arr.pop() + "<br>");
+		document.write(arr.length + "<br>");
+		document.write(arr.pop() + "<br>");
+		document.write(arr.length + "<br>");
+		document.write(arr + "<br><br>");
+
+		document.write(arr.length + "<br>");
+		document.write(arr.shift() + "<br>");
+		document.write(arr.length + "<br>");
+		document.write(arr.shift() + "<br>");
+		document.write(arr.length + "<br>");
+		document.write(arr + "<br><br>");
+
+		arr.unshift("자라바바스크립트");
+		document.write(arr.length + "<br>");
+		document.write(arr + "<br><br>");
+
+		document.write(arr.reverse() + "<br><br>");
+
+		var strArr = [ "로마", "나라", "감자", "다람쥐" ];
+		var numArr = [ 10, 21, 1, 2, 3 ];
+		document.write(strArr.sort() + "<br>");
+		document.write(numArr.sort() + "<br><br>"); //sort() 는 모든 데이터를 문자로 생각하고 sort
+
+		var arr = [ 1, true, "JavaScript", "자바스크립트" ];
+
+		var removedElement = arr.splice(1, 2, false, "C언어"); // 1 위치부터 2개를 삭제하고 그 위치에 새로운 데이터 추가하겠다
+		document.write(arr + "<br>");
+		document.write(removedElement);
+	</script>
+
+</body>
+</html>

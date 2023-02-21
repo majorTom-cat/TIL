@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02 0221 ex01</title>
+<script>
+	var num1 = parseInt(prompt("첫번째 숫자 입력"));
+	var num2 = parseInt(prompt("두번째 숫자 입력"));
+
+	document.write("num1 = " + num1 + "<br/>");
+	document.write("num2 = " + num2 + "<br/>");
+
+	if (num1 >= num2) {
+		var large = num1;
+		var small = num2;
+	} else {
+		var small = num1;
+		var large = num2;
+	}
+
+	document.write("<br>");
+	document.write("<table border=1px;>");
+	document.write("<tr align=center>");
+	for (let i = small; i <= large; i++) {
+		document.write("<td>" + "<b>" + i + "단 " + "</b>" + "</td>");
+	}
+	document.write("</tr>");
+
+	for (let i = 1; i <= 9; i++) {
+		document.write("<tr>");
+		for (let j = small; j <= large; j++) {
+			document.write("<td padding=2px>" + j + "*" + i + "=" + j*i + "</td>");
+		}
+		document.write("</tr>");
+	}
+
+	document.write("</table>");
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

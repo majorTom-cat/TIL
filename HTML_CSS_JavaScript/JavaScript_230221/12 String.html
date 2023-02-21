@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12 String</title>
+</head>
+<body>
+
+<h1>String 객체</h1>
+<script>
+	var str = "JavaScript";
+	var strObj = new String("JavaScript");
+	
+	document.write(str + "<br>");
+	document.write(strObj + "<br>");
+	document.write(typeof str + "<br>");
+	document.write(typeof strObj + "<br>");
+	document.write((str == strObj) + "<br>"); // 값만 비교
+	document.write((str === strObj) + "<br><br>"); // 값 + 타입 비교
+	
+	var num = 10;
+	var numObj = "10";
+	document.write(num + "<br>");
+	document.write(numObj + "<br>");
+	document.write(typeof num + "<br>");
+	document.write(typeof numObj + "<br>");
+	document.write((num == numObj) + "<br>");
+	document.write((num === numObj) + "<br><br>");
+	
+	
+	var str = "abcDEFabc";
+	document.write(str.indexOf('abc') + "<br>");
+	document.write(str.indexOf('abcd') + "<br>");
+	document.write(str.indexOf('abc', 3) + "<br><br>"); // 3위치부터 찾아라
+	
+	document.write(str.lastIndexOf('abc') + "<br>");
+	document.write(str.lastIndexOf('d') + "<br>");
+	document.write(str.lastIndexOf('c') + "<br><br>");
+	
+	document.write(str.charAt(0) + "<br>");
+	document.write(str.slice(2, 6) + "<br>"); // 2부터 6 이전까지
+	document.write(str.slice(-4, -2) + "<br>"); // 오른쪽부터
+	document.write(str.slice(2) + "<br>"); // 2부터 끝까지
+	document.write(str.substring(2, 6) + "<br>"); // 2부터 6 이전까지. slice와 동일하게 동작
+	document.write(str.substr(2, 4) + "<br><br>"); // 2부터 4개
+	
+	var str2 = "자바스크립트는 너무 멋져요! 그리고 유용해요.";
+	document.write(str2.split() + "<br>");
+	document.write(str2.split("") + "<br>"); // 문자 기준
+	document.write(str2.split(" ") + "<br>"); // 공백 기준
+	document.write(str2.split("!") + "<br><br>"); // 느낌표 기준
+	
+	var res = str2.split(" "); // res는 배열구조. split은 배열구조로 반환함
+	for (let i=0; i<res.length; i++) 
+		document.write(res[i] + "<br>");
+	//for (let str3 in res)
+		//document.write(str3.split("!") + "<br>");
+	
+	var str4 = "자바스크립트";
+	document.write(str4.concat("는 너무 멋져요!") + "<br><br>"); // 연결시켜 반환
+	
+	var str5 = "JavaScript";
+	document.write(str5.toUpperCase() + "<br>");
+	document.write(str5.toLowerCase() + "<br>");
+	
+	var str6 = "       JavaScript   ";
+	document.write("##" + str6.trim() + "##");
+
+</script>
+
+
+</body>
+</html>

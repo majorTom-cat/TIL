@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+<script>
+function jumin_check() {
+	var chk_list = "";
+	if (document.input_form.ju1.value == "") // 빈 공백 여부 검사
+	{
+		alert("주민번호(앞자리)를 입력하세요!!!");
+		document.input_form.ju1.focus();
+		return false;
+	} 
+	else if (document.input_form.ju2.value == "") // 빈 공백 여부 검사
+	{
+		alert("주민번호(뒷자리)를 입력하세요!!!");
+		document.input_form.ju2.focus();
+		return false;
+	} 
+	else
+	{
+		var str1 = document.input_form.ju1.value;
+		var str2 = document.input_form.ju2.value;
+		if (str1.length != 6) // 자릿수 검사
+		{
+			alert("주민번호 확인(생년월일 6자리)!!!");
+			document.input_form.ju1.focus();
+			return false;
+		}
+		else if (str2.length != 7) // 자릿수 검사
+		{
+			alert("주민번호 확인(7자리)!!!");
+			document.input_form.ju2.focus();
+			return false;
+		}
+		else // 입력 되었고 6자리 7자리 맞다는뜻
+		{
+			str = str1 + str2; // 1234561234563
+			var w = 2, hap = 0, chk;
+			for (i=0; i<str.length-1; i++) // 맨 마지막숫자 3은 check dight 이므로
+			{
+				ch = str.substring(i, i+1); // slice, charAt 도 가능
+				if (!(ch >= "0" && ch <= "9")) // 숫자 여부 체크
+				{
+					alert("특수문자가 포함, 다시 입력!!!");
+					document.input_form.ju1.focus();
+					return false;
+				}
+				else // 숫자가 맞다는 뜻
+				{
+					//if (i == (str.length-1))
+					//	continue;
+					hap += parseInt(ch) * w; // 문자열을 숫자로 바꿔 가중치 w 곱함
+					w++;
+					if (w == 10)
+						w = 2;
+				}
+			}
+			chk = 11 - (hap % 11);
+			if (chk == 10)
+				chk = 0;
+			else if (chk == 11)
+				chk = 1;
+			
+			if (chk != parseInt(str.substring(str.length-1, str.length) ) )
+			{
+				alert("주민번호 오류, 다시 입력!!!");
+				document.input_form.ju1.focus();
+				return false;
+			}
+		}
+	} // 주민번호 체크 <------
+	chk_list = document.input_form.ju1.value + "-" 
+			 + document.input_form.ju2.value + "(O)";
+	alert(chk_list);
+}
+</script>
+</head>
+<body>
+<form name="input_form" action="" method="post">
+	<input type="text" size="6" maxlength="6" name="ju1">-
+	<input type="text" size="7" maxlength="7" name="ju2">
+	<input type="button" value="체크" onclick="jumin_check()">
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>5 globalNum</title>
+</head>
+<body>
+	<h1>전역 변수</h1>
+	<script>
+		var num = 10; //전역 변수 num을 선언함.
+		function globalNum() {
+			document.write("함수 내부에서 변수 num의 값은 " + num + "입니다.<br>");
+			{ // var로 선언은 했지만 초기화 하지 않았으므로 error 가 아닌 undefined
+				var num = 20; //전역 변수 num의 값을 함수 내부에서 변경함.
+				document.write("함수 내부에서 변수 num의 값은 " + num + "입니다.<br>");
+			}
+			document.write("함수 내부에서 변수 num의 값은 " + num + "입니다.<br>");
+		}
+		globalNum(); // 함수 globalNum()을 호출함.
+		document.write("함수의 호출이 끝난 뒤 변수 num의 값은 " + num + "입니다.<br>");
+	</script>
+
+</body>
+</html>
