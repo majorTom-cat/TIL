@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bubbling 2</title>
+
+<style> 
+    body * {
+      margin: 40px;
+      border: 1px solid blue;
+    }
+    #grandparent {
+      border: 2px solid red;
+    }
+    #parent {
+      border: 4px solid green;
+    }
+</style>
+
+</head>
+<body>
+	<script>
+		function grandparentClicked() {
+			console.log('조부모!!');
+		}
+		function childClicked(event) {
+			console.log('자식!');
+			event.preventDefault();
+
+			console.log("종료됐나요?");
+			console.log("네 종료됐어요ㅠ");
+		}
+	</script>
+<body>
+	<div id="grandparent" onclick="grandparentClicked()">
+		<div id="parent">
+			<a id="child" href="아무사이트" onclick="childClicked(event)"> 링크입니다! </a>
+		</div>
+	</div>
+</body>
+</body>
+</html>
