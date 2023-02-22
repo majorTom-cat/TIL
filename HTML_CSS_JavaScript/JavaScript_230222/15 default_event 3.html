@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>15 default event 3</title>
+	<style>
+		#divBox {width: 100%; heigt: 100px; border: 2px solid red;}
+		#paraBox {width: 80%; heigt: 50px; border: 2px solid orange;}
+		#spanBox { border: 2px solid green;}
+	</style>
+
+
+	<script>
+		// 이벤트를 연결합니다.
+		window.onload = function () {
+			document.getElementById("divBox").addEventListener("click", clickDiv);
+			document.getElementById("paraBox").addEventListener("click", clickPara);
+			document.getElementById("linkBox").addEventListener("click", clickLink);
+
+			function clickDiv(event) {
+				document.getElementById("text").innerHTML += "div 요소를 click 하셨네요!<br>"
+			}
+			function clickPara(event) {
+				document.getElementById("text").innerHTML += "p 요소를 click 하셨네요!<br>"
+			}
+			function clickLink(event) {
+				event.preventDefault(); // 가급적 이벤트 취소는 이것 사용
+				//return false;
+				document.getElementById("text").innerHTML += "링크의 기본 동작을 막았어요!<br>"
+				document.getElementById("text").innerHTML += "a 요소를 click 하셨네요!<br>"
+			}
+		};
+	
+	
+	</script>
+
+</head>
+<body>
+	<h1>버블링 이벤트 전파</h1>
+	<div id="divBox">
+		<p id="paraBox">박스 안의 여러 곳을 <a id="linkBox" href="/javascript/intro">클릭</a>해 보세요!</p>
+	
+	</div>
+	<p id="text"></p>
+</body>
+</html>

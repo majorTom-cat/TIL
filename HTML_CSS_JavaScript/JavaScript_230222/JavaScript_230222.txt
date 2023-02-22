@@ -1,0 +1,93 @@
+react 까지 3/7~8 에 끝낼듯
+
+문서 객체 모델 DOM(Document Object Model)
+- XML이나 HTML 문서에 접근하기 위한 일종의 인터페이스
+- 문서 내의 모든 요소를 정의하고, 각각의 요소에 접근하는 방법을 제공
+- 계층구조
+
+https://action713.tistory.com/entry/body-onload-window-onload
+
+자바스크립트는 HTML 요소들을 객체로 접근
+
+이벤트를 다루는 내용들은 보통 시작이 on
+onload : 문서를 읽고난 뒤 자동으로 실행
+
+자바스크립트에선 특정 객체가 여러개면 해당 변수를 배열 객체로 만든다. (ex : querySelectorAll)
+
+window.onload = ...... }; 세미콜론 필요
+
+노드 간의 관계를 이용하여 접근하는 방법
+- parentNode : 부모 노드
+- childNodes : 자식 노드 리스트
+- firstChild :  첫 번째 자식 노드
+- lastChild : 마지막 자식 노드
+- nextSibling : 다음 형제 노드. childNode 처럼 비 요소노드(줄바꿈 문자 등)도 찾아버려서 복잡할듯
+- previousSibling : 이전 형제 노드
+
+- children : 비 요소노드는 다 제거
+-childNode : 비 요소노드 다 포함(<!DOCTYPE html>, 주석, 줄바꿈 문자(escape sequence문자) 등)
+
+event 객체
+- 이벤트에 대한 상세한 정보를 저장
+- 모든 이벤트 객체는 이벤트의 타입을 나타내는 type 프로퍼티와 이벤트의 대상을 나타내는 target 프로퍼티를 가진다.
+- 이벤트 객체는 이벤트 리스너가 호출될 때 인수로 전달
+
+11 event_listen2
+함수들을 굳이 onload 안에 놓을 필요는 없음. onload 안에 없으면 밖에서 찾기 때문
+
+14 default_event
+return false랑 event.preventDefault할 때랑 같은 결과가 나오는 건가요?
+return false는 함수 자체를 return으로 끝내는 것이고, preventDefault는 특정 이벤트만 실행 안되게 하는겁니다.
+preventDefault 아래에 코드가 있다면 계속해서 정상 진행 될거에요
+
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=classe82&logNo=221581820838
+
+15 default event 3
+event.preventDefault(); // 가급적 이벤트 취소는 이것 사용
+addEventListener로 콜백 함수로 사용하면 return false 가 작동하지 않음
+사진 참고
+
+버블링
+https://debonair-quality-71d.notion.site/return-false-preventDefault-2e81284dd8eb4eb283d55af90ff9991f
+
+win + space 한글입력기
+
+브라우저 내장객체(브라우저 객체 모델 : BOM)
+window - 웹 브라우저의 창(window)을 나타내는 객체. 브라우저에서 가장 부모가 됨
+	open(), close()
+location - 현재 브라우저에 표시된 HTML 문서의 주소를 얻거나, 브라우저에 새 문서를 불러올 때 사용
+history - 브라우저의 히스토리 정보를 문서와 문서 상태 목록으로 저장하는 객체
+	back() : 뒤로가기, forward() : 앞으로가기
+	go(), go(-1) : 뒤로가기, go(1) : 앞으로가기
+screen - 사용자의 디스플레이 화면에 대한 다양한 정보를 저장하는 객체
+navigator - 브라우저 공급자 및 버전 정보 등을 포함한 브라우저에 대한 다양한 정보를 저장하는 객체
+
+setInterval(), clearInterval()
+setTimeout(), clearTimeout()
+
+사실 자바스크립트도 일주일 꽉 채워 수업해도 모자랄수도
+
+제이쿼리(jQuery)
+- 자바스크립트 언어를 간편하게 사용할 수 있도록 단순화시킨 오픈 소스 기반의 자바스크립트 라이브러리
+- 문서 객체 모델(DOM)과 이벤트에 관한 처리를 손쉽게 구현
+- Ajax 응용 프로그램 및 플러그인도 제이쿼리를 활용하여 빠르게 개발
+Ajax : 특정 부분만 불러오기. HTML 전체를 새롭게 다시 가져오는것보다 빠름. 수업 안할수도
+Ajax 라이브러리 활용해 서버와 react 데이터 주고받기 가능
+
+일반적으로
+Download the uncompressed, development jQuery 3.6.3
+용량 최소화를 원하면
+Download the compressed, production jQuery 3.6.3
+CDN 사용 권장
+https://code.jquery.com/jquery-3.6.3.min.js
+
+$(객체이름)
+
+자바스크립트에서 serAttribute() 와 getAttribute()
+jQuery에서의 attr(속성) : 값을 불러옴
+attr(속성, 값) : 속성에 값을 설정
+
+innerHTML() 과 비슷한 html()
+innerText() 와 비슷한 text()
+
+jqControl_textHtmlSet

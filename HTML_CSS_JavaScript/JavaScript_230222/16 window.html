@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>16 window</title>
+<script>
+	var newWindowObj;
+	var strWindowFeatures = "menuvar=yes,location=yes,resizable=yes,status=yes,top=100,left=100,with=300,height=400";
+	function openWindow() {
+		newWindowObj = window.open("form.html", "HTML 개요", strWindowFeatures);
+	}
+	function closeNewWindow() { // 새롭게 연 브라우저 창을 window 객체를 이용하여 다시 닫을 수 있음.
+		newWindowObj.close();
+	}
+</script>
+
+
+
+</head>
+<body>
+	<h1>브라우저 창 닫기</h1>
+	<button onclick="openWindow()">새로운 창 열기</button>
+	<button onclick="closeNewWindow()">새로 연 창 닫기</button>
+
+</body>
+</html>

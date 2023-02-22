@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>6 dom_clock</title>
+<script>
+	var res;
+	window.onload = function() {
+		// 문서 객체를 선택합니다.
+		var clock = document.getElementById('clock');
+		// 1초마다 함수를 실행합니다.
+		res = setInterval(function() { // 콜백함수
+			var now = new Date();
+			clock.innerHTML = now.toString();
+		}, 1000); // 1초마다 이 함수를 호출
+	};
+
+	function timeStop() {
+		clearInterval(res); // setInterval 과 마찬가지로 window 객체가 제공.
+	}
+</script>
+
+</head>
+<body>
+	<h1 id="clock"></h1>
+	<input type="button" onclick="timeStop()" value="스토프"/>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>21 jQuery</title>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	$(document).ready(function() { // window.onload 와 동일
+		alert("jQuery");
+		$('h1').css('color', 'red');
+		$('h1').css('background', 'black');
+		
+
+		// 속성을 추출합니다.
+		var src = $('script').attr('src');
+		// 출력합니다.
+		alert(src);
+		
+
+		// 속성을 지정합니다.
+		$('img').attr('alt', 'jQuery 라이브러리를 사용한 속성 지정');
+		$('img').attr('src', 'http://placehold.it/100x100');
+		$('img').attr('width', '100');
+		
+		// 속성 지정 다른방법
+		$('img').attr({
+			alt: 'jQuery 라이브러리를 사용한 속성 지정',
+			src: 'http://placehold.it/100x100',
+			width: 100
+		});
+		
+		// 함수를 이용해 속성 지정하기. 이 예제에선 3번 반복
+		$('img').attr({
+			alt: 'jQuery 라이브러리를 사용한 속성 지정',
+			src: function (index) { // 0 1 2
+				// 변수를 선언합니다.
+				var size = (index + 1) * 100;
+				
+				// 반환합니다.
+				return 'http://placehold.it/' + size + 'x100';
+			}
+		});
+
+	});
+</script>
+
+</head>
+<body>
+	<h1>Header</h1>
+	<h1>Header</h1>
+	<h1>Header</h1>
+
+	<img />
+	<img />
+	<img />
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>23 jQuery_basic</title>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	$(document).ready(function () {
+		// 변수를 선언합니다.
+		var text = $('div').text(); // 모든 div 다 찾음. 하위 요소를 텍스트만 읽어옴
+		var html = $('div').html(); // 첫번째 div만 찾음. 하위 요소를 다 읽어옴
+		
+		// 출력합니다.
+		alert("text: " + text);
+		alert("html: " + html);
+		
+		
+	});
+
+</script>
+
+
+</head>
+<body>
+<div><span>Header - 0</span></div>
+<div><span>Header - 1</span></div>
+<div><span>Header - 2</span></div>
+<div><span>Header - 3</span></div>
+</body>
+</html>
