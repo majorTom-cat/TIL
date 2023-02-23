@@ -10,6 +10,15 @@ JavaScript 는 addEventListener
 
 hover() 는 mouseenter() 와 mouselesve() 이벤트가 동시 연결된것
 
+이벤트 리스너
+function(event)
+
+02 off.html
+on은 기본 이벤트를 설정하고 off는 이벤트를 갖고있는 요소의 이벤트 반응을 중지시킴
+
+03 jqAnimate_fade
+click 이라는 이벤트에 익명 콜백함수 호출
+
 390p
 click : function() { $(this).css('background', 'red'); }, 처럼 객체의 메소드 정의하는거와 비슷
 
@@ -21,6 +30,15 @@ click 이란 이벤트를 통해 자바스크립트 내부적으로 이벤트 �
 무한 스크롤 - 인스타나 페북에 사용. 일정양만 표시하고 내리면 더 로딩하는거.
 
 조금 뒷북이지만, 브라우저의 크기가 100%가 아니면 무한스크롤이 정상작동하지 않을 수도 있습니다
+
+left, top 같은 속성을 사용하려면 position 속성을 absolute 혹은 relative로 지정해야함
+
+일반적으로 jQuery 객체를 변수에 저장할때는 변수 앞에 식별자 $를 붙여 사용한다.
+var $dynamic = $('<h1>Create Document Object + ' + i + '</h1>').css({
+				backgroundColor: 'black',
+				color: 'red'
+			});
+
 
 ${$('#irum').val()}
 	$('#irum').val() 값을 출력하라는 뜻
