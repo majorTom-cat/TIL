@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02 off</title>
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	$(function() {
+		$("#clickBtn").on("click", function() {
+			$("#text").append("버튼을 클릭했어요<br>");
+		});
+		$("#removeBtn").on("click", function() {
+			$("#text").off("click"); // click 이벤트만 제거
+			//$("#text").off(); // #text 엘리먼트와 관련된 모든 이벤트 제거
+		})
+	})
+</script>
+
+
+</head>
+<body>
+	<h1>on(), off() 메소드</h1>
+	<button id="clickBtn">마우스를 클릭해 보세요!</button>
+	<button id="removeBtn">클릭 이벤트를 제거합니다!</button>
+	<p id="text"></p>
+</body>
+</html>

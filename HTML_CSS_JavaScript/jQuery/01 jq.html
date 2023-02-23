@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01 jq</title>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	/*function func() {
+		//addAttribute(); // 아이디가 "para" 인 HTML 요소에 속성을 추가함.
+		createElement(); // 아이디가 "para"인 HTML 요소를 생성함.
+		addAttribute(); // 아이디가 "para" 인 HTML 요소에 속성을 추가함.
+		// 호출 순서가 중요
+	}*/
+	
+	$(document).ready(function () {
+		createElement(); // 아이디가 "para"인 HTML 요소를 생성함.
+		addAttribute(); // 아이디가 "para" 인 HTML 요소에 속성을 추가함.
+		// 호출 순서가 중요
+	});
+	
+	function createElement() {
+		var criteriaNode = document.getElementById("text");
+		var newNode = document.createElement("p"); // p 태그 생성
+		newNode.innerHTML = "새로운 단락입니다.";
+		newNode.setAttribute("id", "para");
+		document.body.insertBefore(newNode, criteriaNode);
+
+	}
+	function addAttribute() {
+		document.getElementById("para").setAttribute("style", "color: red");
+	} // 없는 요소에 스타일 추가시킴
+</script>
+
+</head>
+<body>
+	<h1>아직 생성되지 않은 HTML 요소에 속성 추가</h1>
+
+	<button onclick="func()">속성 추가!</button>
+	<p id="text"></p>
+
+</body>
+</html>

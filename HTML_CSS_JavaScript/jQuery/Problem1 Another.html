@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Problem1 Another</title>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	$(document).ready(function () {
+		$("#btnAdd").click(function () {
+		var row = `<tr align='center'>
+						<td>${$('#irum').val()}</td>
+						<td>${$('#score').val()}</td>
+						<td><input type="button" class="btnDel" value="del"></td>
+					</tr>`;
+		$("#list").append(row);
+		$('#irum').val(''); // 클리어 시켜주기 위해
+		$('#score').val(''); // 클리어 시켜주기 위해
+		
+		});
+		
+		$("#list").on("click", ".btnDel", function() { // 리스트 자체에 등록하는게 아닌 list 하위에 있는 요소에 click 등록
+			$(this).parent().parent().remove(); // this -> td -> tr 제거
+		});
+
+	});
+	
+</script>
+
+
+</head>
+<body>
+
+
+	<table border="1" align="center">
+		<tr>
+			<td><input id="irum" type="text" size="5" placeholder="이름 입력" size="10px;"></td>
+			<td><input id="score" type="text" size="5" placeholder="점수 입력" size="10px;"></td>
+			<td><input type="button" id="btnAdd" value="추가"></td>
+		</tr>
+	</table>
+
+	<br>
+
+
+	<table id="list" border="1" align="center">
+		<tr>
+			<th width="70px">이름</th>
+			<th width="70px">점수</th>
+			<th width="50px">&nbsp;</th>
+			
+			<!-- 이 위치에 추가하는것 -->
+			
+		</tr>
+	</table>
+
+
+
+
+</body>
+</html>

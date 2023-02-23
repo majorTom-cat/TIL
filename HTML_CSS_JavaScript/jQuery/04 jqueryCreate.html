@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04 jquery Create</title>
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	$(document).ready(function () {
+		for (var i = 0; i < 10; i++) {
+			$('<h1>Create Document Object + ' + i + '</h1>').css({
+				backgroundColor: 'black',
+				color: 'red'
+			}).appendTo('body');
+		}
+		
+	});
+	
+	$(document).ready(function () {
+		for (var i = 0; i < 10; i++) {
+			var $dynamic = $('<h1>Create Document Object + ' + i + '</h1>').css({
+				backgroundColor: 'black',
+				color: 'red'
+			});
+			
+			
+			$('body').append($dynamic);
+		}
+		
+	});
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0223 Problem</title>
+</head>
+	<style>
+		body {background-color: navy; align-items: center;}
+	
+		div table {
+		margin: 0 auto;
+		width: 300px;}
+	
+	</style>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+	$(document).ready( function () {
+		var inputName = $('input[name=name]').val();
+		var inputScore = $('input[name=score]').val();
+		
+		
+		
+		$('#btn').click(function () {
+			console.log(inputName);
+			console.log(inputScore);
+			createElement()
+			
+		});
+		
+		function createElement() {
+			var criteriaNode = document.getElementById("generateTable");
+			var newNode = document.createElement("tr"); // p 태그 생성
+			newNode.innerHTML = "<td>" + inputName + "</td>" + "<td>" + inputScore
+				+ "</td>" + "<td>" + "<button id='del' value='del'></button>" + "</td>" + "</tr>";
+			//newNode.setAttribute("id", "para");
+			document.table[id='generateTable'].insertBefore(newNode, criteriaNode);
+
+		}
+		
+	});
+
+</script>
+
+<body>
+
+	<div class="board">
+		<table border="1">
+			<tr>
+				<td><input name="name" type="text" placeholder="이름 입력" size="10px;"></td>
+				<td><input name="score" type="text" placeholder="점수 입력" size="10px;"></td>
+				<td>
+					<button id="btn">추가</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+
+	<div class="board">
+		<table border="1" id='generateTable'>
+			<tr>
+				<th>이름</th>
+				<th>점수</th>
+				<th>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+</html>
