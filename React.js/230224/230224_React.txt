@@ -1,0 +1,226 @@
+자바
+- 문법, 클래스, 인터페이스, 상속, 오버로딩, 오버라이딩, 생성자
+
+HTML
+- 10개 내외의 태그
+
+리액트 필수는 진도 8장까지, 13장
+
+컴포넌트(태그처럼 다룰 수 있는 요소)로 만들고 조립해서 쓰는 형식으로 사용
+재사용성 증가
+
+1-1
+Vue 같은경우 너무 심플하고 정해진 틀이 있음.
+
+MVC 아키텍처(Model Viewer Controller)
+Model - data. 데이터의 키 값으로 데이터를 찾아서 보내줌. 데이터베이스 연동
+Viewer - UI. 우리가 보는것
+Controller 요청받으면 해석하고 보내주는것
+
+class ddasdas {
+	String title = "Hello"l
+}
+
+JSON으로 변환시키면
+{
+"title" : "Hello"
+}
+
+<HTML>
+<BODY>
+  <Header />
+  <Content />
+  <Side />
+  <Footer />
+</BODY>
+</HTML>
+
+Header 내용을 class의 메소드로 만든다면..
+
+리액트는 자바스크립트를 잘 다뤄야함. 자바스크립트를 기반으로 컴포넌트를 기술함
+
+렌더링
+
+Header 내용이 render 함수 안에 들어있는식
+
+class Header {
+  render() {
+    header 내용
+  }
+}
+
+<HTML>
+<BODY>
+  <Header />
+  렌더링. Header class를 찾음. render 결과물 뿌려짐
+
+</BODY>
+</HTML>
+
+HTML 마크업을 만들고 DOM에 주입. Node.js 사용할것
+
+1.1.1.2
+조화
+전체를 렌더링하는것보다 부분만 하는것이 빠르다
+
+1.2.1
+1.3.1
+LTS버전
+C/Programfile 에 설치함
+
+yarn 설치 명령어
+npm install --global yarn
+
+vs code
+F1 키
+>Configure Display Language
+
+
+yarn create react-app hello-react
+
+경로에 공백이 있으면 제대로 설치가 안될 수 있음. 한글이나 특수문자도 금지! (다른 사람이 yarn 설치에 문제있었음)
+
+외우자
+yarn start
+node.js로 서버 구동하는것
+
+정리해보자면
+프로젝트 생성
+> yarn create react-app 프로젝트명
+yarn을 사용하지 않는 경우
+yarn을 사용하지 않는 경우라면 다음 명령어를 사용하여 리액트 프로젝트를 생성할 수 있습니다.
+> npm init react-app <프로젝트 이름>
+
+해당 프로젝트 폴더로 이동
+> cd 프로젝트명
+
+실행
+> yarn start
+또는 npm start
+자동으로 브라우저가 안열리면
+http://localhost:3000
+
+index.html
+<div id="root"></div>
+
+보통 index라는건 시작을 의미. 리액트는 다 JS로 만들어짐
+
+<App />이 컴포넌트. JS 로 만들어짐. App이라는 컴포넌트를 함수로 정의해놓음
+App.js
+<div className="App">
+
+HTML 에서는 class="App-logo" 로 했지만 React 에서는 className="App-logo"
+
+맨 밑
+export default App;
+외부에서 접근이 가능하도록 하는것. 다른곳에서 import 가능하게 함
+
+컴포넌트 정의 방법
+1. class 기반 - render() { JSX 코드 }
+2. function 기반 - return(JSX 코드 반환)
+return 안에 있는것이 HTML 처럼 보이지만 이것을 JSX 코드라고 부름
+
+index.js 에서
+import App from './App'; 자바에서의 import와 똑같음. App의 확장자는 자동으로 .js
+컴포넌트를 App이라는 이름으로 사용하겠다는것
+
+다시 정리해보면
+index.html <- index.js <- App.js
+
+2
+JSX(Java Script XML)
+
+target="_blank" 무슨뜻이었지
+
+function 기반의 컴포넌트 정의가 괜찮을거같기도 함
+
+번들러는 기본적으로 웹팩을 사용.
+
+2.4.1 감싸인 요소
+JSX는 반드시 하나의 요소만 반환시킴
+여러 요소를 하나로 묶어주면 된다. <div> 혹은 import React, { Fragment } from 'react'; 임포트 후 <Fragment>라는 컴포넌트 활용.
+import React from 'react'; 임포트 후 <> 도 가능
+
+Reacp 서버 렉걸릴경우 커맨드창 ctrl+c
+
+2.4.3 If 문 대신 조건부 연산자
+JSX 내부의 자바스크립트 표현식에서 if 문을 사용할 수는 없습니다.  { } 안에 조건부 연산자를 사용
+조건부 연산자의 또 다른 이름은 삼항 연산자
+
+2.4.4 AND 연산자(&&)를 사용한 조건부 렌더링
+const name = '뤼왝트';
+  return <div>{name === '리액트' ? <h1>리액트입니다.</h1> : null}</div>; 대신
+const name = '뤼왝트';
+  return <div>{name === '리액트' && <h1>리액트입니다.</h1>}</div>;
+
+const number = 0;
+return number && <div>내용</div>
+0은 거짓으로 간주. 1이 참
+그래서 0을 출력함
+
+2.4.5 undefined를 렌더링하지 않기
+최근 버전은 에러 안나옴. 1년전만해도 에러 나옴
+
+undefined 는 거짓으로 간주
+
+커맨드창은 항상 열려있는상태로 있어야함
+
+왼쪽 사이드바에 소스제어(Source control 은 사용하지 말자. 사용할일 없을것)
+
+JSX에서는 모든 태그는 종료태그를 가져야함
+<br> ==> <br />
+클래스 사용하려면 class 대신 className을 사용
+
+모든 태그를 만들때 종료태그를 넣는 습관. 단독태드도 끝에 / 붙이자
+ <input></input> 보다는 <input /> self-closing 태그라고 부름
+
+{/* 주석은 이렇게 작성합니다. */}
+// 하지만 이런 주석이나
+/* 이런 주석은 페이지에 그대로 나타나게 됩니다. */
+
+2.5.1 ESLint
+
+
+3장
+class 기반 컴포넌트
+import React, { Component } from "react"; 필요
+
+자바스크립트 할때 class라는 개념 안썻었음. ES6부터 사용 가능
+
+클래스형 컴포넌트에서는 render 함수가 꼭 있어야 하고, 그 안에서 보여 주어야 할 JSX를 반환해야 한다.
+
+함수형 컴포넌트의 주요 단점은 state와 라이프사이클 API의 사용이 불가능하다는 점인데요.
+이 단점은 리액트 v16.8 업데이트 이후 Hooks라는 기능이 도입되면서 해결되었습니다.
+완전히 클래스형 컴포넌트와 똑같이 사용할 수 있는 것은 아니지만 조금 다른 방식으로 비슷한 작업을 할 수 있게 되었습니다.
+이번 장에서 Hooks에 대한 내용은 맛보기로만 조금 배워 보고, 8장에서 더 자세히 다루겠습니다.
+
+3.2.2 코드 작성하기
+index.html <- index.js <- App.js <- MyComponent.js
+
+export default MyComponent; 에서 default로 하면
+import My from "./MyComponent"; 이런식으로 이름 바꿔서 사용 가능하지만 권장사항 아님
+
+여러개 정의했을때
+import React, { Component } from "react"; 중괄호 안에 여러개 쓰기도 함
+
+3.3 props
+index.html <- index.js <- App.js <- MyComponent.js
+부모컴포넌트에서 자식컴포넌트에게 정보를 전달할때. props
+정보를 전달할때 속성 형태로 전달. props 라는 이름 바꾸면 안됨
+
+리액트에서는 public에 있는 index.html이 기본으로 잡혀있음
+
+props 위치에다가 {name, name2} 를 쓰고
+{props.name}, {props.name2} 대신 (name}, {name2} 를 리턴시켜도 됨
+실전에서 이 방법을 더 사용
+
+ {name, name2} = props; 인 셈. 비구조화 할당 이라고 함
+부모 자식 관계만 가능. 부모가 자식한테 보낼때.
+조부모가 부모한테. 부모가 자식한테. 이렇게 2단계를 걸쳐서 전달도 가능. 건너뛰는건 안됨
+
+컴포넌트의 부모관계와 상관없이 직접 보내고 싶다면
+context / redux / recoil 와 같은 상태관리도구에 대해 알아보시면 됩니다
+공유할 데이터가 소량이면 context
+데이터가 크면 redux 써도 됨. 진도가 여기까지 갈지는모름
+
+3.3.4 태그 사이의 내용을 보여 주는 children 전까지 진도 나감.
