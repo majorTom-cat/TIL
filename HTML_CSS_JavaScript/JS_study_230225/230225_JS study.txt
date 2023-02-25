@@ -1,0 +1,169 @@
+230225 JS 공부. React를 사용할때 JS를 잘 알아야한다.
+부족한게 너무 많다. jQuery와 비슷하지만 다른 문법때문에 혼란스럽다.
+바닐라 JS를 먼저 익숙하게 해둘 필요가 있다고 생각한다.
+
+모던 자바스크립트 입문
+플레이스 홀더
+${...}
+var a = 2, b = 3;
+console.log(`${a} + ${b} = ${a+b}`); {} 안에 든 부분을 문자열로 바꿈
+2 + 3 = 5
+
+객체 리터럴로 객체 생성하기. {...} 부분으 객체 리터럴
+var card = { suit: "하트", rank: "A"};
+card.suit // 하트
+card["rank"] // A
+
+빈 객체. 객체를 생성만함
+var obj = {};
+console.log(obj); // Object{}
+
+없는 프로퍼티 추가및 삭제
+card.value = 14;
+console.log(card); // Object { suit: "하트", rank: "A", value: 14};
+
+delete card.rank;
+console.log(card); // Object { suit: "하트", value: 14};
+
+Java와 C++ 등에서는 객체의 프로퍼티를 실행 중에 추가하거나 삭제할 수 없음.
+
+4.1.4 94p in 연산자로 프로퍼티가 있는지 확인하기
+console.log("suit" in card); // true
+
+console.log("toString" in card); // true
+card가 Object 객체를 상속받았기 때문.
+
+4.1.7 96p 객체는 참조 타입
+var a = card;
+console.log(a.suit); // 하트
+a.suit = "스페이드";
+console.log(a.suit); // 스페이드
+console.log(card.suit); // 스페이드
+
+함수에서 return 다음에 줄바꿈 문자를 넣지 말것!
+
+4.2.6 함수의 실행 흐름
+return 문이 실행되지 않은 상태로 마지막 문장이 실행되면, 호출한 코드가 돌아간 후에 undefined가 함수의 반환값이 된다.
+
+4.2.7 함수 선언문의 끌어올림
+자바스크립트 엔진은 변수 선언문과 마찬가지로 함수 선언문을 프로그램의 첫머리로 끌어올립니다. (호이스팅인가?)
+함수 선언문은 프로그램의 어떤 위치에도 작성할 수 있습니다.
+
+4.2.8 값으로서의 함수
+JS에서는 함수가 객체. 함수 선언문으로 함수를 선언하면 내부적으로는 그 함수 이름을 변수 이름으로 한 변수와
+함수 객체가 만들어지고, 그 변수에 함수 객체의 참조가 저장된다,
+square --> function(x){ return x*x}
+var sq = square;
+console.log(sq(5)); // 25
+
+변수 let, const, var
+var 문으로 선언한 변수는 JS 엔진이 선언문을 평가하기 전에 undefined로 초기화한다. (변수 끌어올림)
+JS 엔진은 let문과 const문으로 선언한 변수고 끌어올리지만, 선언문을 평가하기 전에는 undefined로 초기화하지 않는다.
+이 기간을 가리켜 TDZ(Temporal Dead Zone)이라고 한다.
+
+4.2.12 함수 리터럴로 함수 정의하기
+var square = function(x) { return x*x; };
+function(x) { return x*x; } 부분이 함수 리터럴. 함수 리터럴른 이름이 없는 함수이므로 익명함수.
+함수 선언문에는 ; 붙일필요 없지만 함수 리터럴을 사용할땐 반드시 ; 붙여야함
+square(5) 라고 쓰면 실행 가능
+JS 엔진이 함수 선언문으로 정의한 함수는 끌어올리지만 함수 리터럴로 정의한 함수는 끌어올리지 않는다.
+함수 리터럴로 정의한 익명 함수는 변수에 할당한 후에야 비로소 square 라는 이름을 갖게되고 그 이름으로 호출 가능.
+var square = function sq(x) { return x*x; }; 처럼 이름을 붙일수도 있지만 sq라는 이름은 함수 안에서만 유효.
+함수 바깥에서 sq라는 이름으로 함수 호출할 수 없음. 디버거에서는 확인할 수 있다는점.
+
+JS 에선 클래스가 없지만 대신 생성자라고 하는 함수로 객체를 생성할 수 있음
+function Card(suit, rank) {
+  this.suit = suit;
+  this.rank = rank;
+}
+생성자로 객체를 생성할때는 new 연산자를 사용
+var card = new Card("하트", "A");
+
+4.5.3 Array 생성자로 생성하기
+var evens = new Array(2, 4, 6 ,8); // [2, 4, 6, 8]을 생성
+var x = new Array(3); 은 인수가 한 개고 그 값이 양의 정수이면 배열의 길이가 3인 빈 배열 생성
+인수가 음의 정수면 오류 발생
+
+4.5.6 배열 요소의 추가와 삭제
+var a = ["A", "B", "C"];
+delete a[1];
+console.log(a); // ["A", undefined, "C"];
+length 프로퍼티 값은 바뀌지 않는다. 즉, 삭제한 요소만 사라짐
+var a = ["A", "B", "C"];
+a[4] = "E";
+console.log(a); // ["A", "B", "C", undefined, "E"];
+이 코드의 배열을 객체 리터럴로 표시하면 다음과 같다(이것을 실제 배열로 대신 사용하려면 length 프로퍼티를 만들어야한다)
+{ "0":"A", "1":"B", "2":"C", "4":"E"}
+
+for (var i in a) console.log(i); // 0, 1, 2, 4
+a.hasOwnProperty("3") // false
+a.hasOwnProperty("4") // true
+
+5.2 산술연산
+JS 에서는 7/2 // 3.5
+부동소수점이 됨
+15 % 4 // 3
+5 % 1.5 // 0.5
+
+true + true // 2 : 논리값의 타입을 숫자로 바꾸어 더함
+1 + null // 1 : null을 0으로 바꾸어 더함
+1 + undefined // NaN : undefined를 NaN으로 바꾸어 더함
+
+5.6 기타 연산
+5.6.1 typeof 연산자
+?: (조건연산자)
+delete (객체의 프로퍼티나 배열요소를 제거한다)
+new, in, instanceof
+var s = "ABC";
+console.log(typeof s); // string
+
+6 웹 브라우저에서의 입출력
+6.1 대화상자 표시
+웹 브라우저의 전역 객체인 Window 객체의 메소드. window 생략 가능
+window.alert 경고 대화상자 표시
+window.prompt 사용자의 문자열 입력을 받는 대화상자 표시
+window.comfirm 확인버튼과 취소버튼이 있는 대화상자 표시
+대화상자는 모달(modal)창
+
+6.1.3 prompt
+var name = prompt("이름을 입력하십시오");
+사용자로부터 입력받은 문자열은 prompt메소드의 반환값이 됨. 반환값이 name 변수에 저장됨
+var name = prompt("이름을 입력하십시오", "이현규");
+두 번째 인수로 초기 입력값을 지정 가능. 옵션임
+prompt가 반환하는 값은 문자열로 숫자 값을 구하려면 parseInt 혹은 parseFloat
+
+6.1.4 confirm
+var ret = confirm("링크를 표시하시겠습니까?");
+확인을 누르면 true 반환. 취소버튼은 false 반환
+
+6.2.4 타이머
+console.time("answer_time");
+alert("확인 버튼을 누르십시오");
+console.timeEnd("answer_time"); // answer_time: 1216.106ms
+
+6.3.1 이벤트 처리기
+함수를 이벤트 처리기로 등록하는 방법
+1. HTML 요소의 속성으로 등록하는 방법
+2. DOM 요소의 프로퍼티로 등록하는 방법
+3. addEventListener 메소드를 사용하는 방법
+
+6.3.2 HTML 요소의 속성에 이벤트 처리기 등록하기
+이벤트 처리기란 이벤트가 발생했을 때 실행되는 함수를 말한다.
+함수를 이벤트가 발생했을때 동작할 이벤트 처리기로 설정하는 행위를 '함수를 이벤트의 이벤트 처리기로 등록한다'
+라고 한다. 함수를 이벤트 처리기로 등록하는 방법은 세 가지이다.
+
+  6_3_1.html
+onclick 부분을 이벤트 처리기 이름 이라고 하며 이벤트 처리기 이름은 곧 이벤트 유형을 뜻함.
+이벤트에 대한 이벤트 처리기의 이름 174p (ondbclick, onmouseover, onfocus, ...)
+
+6.3.3 DOM에서 가져온 HTML 요소에 이벤트 처리기 지정하기
+DOM에서는 HTML 문서나 HTML 요소를 가리키는 객체로 JS를 사용하여 HTML문서를 조작한다.
+DOM의 주요 객체는 다음과 같이 분류할 수 있다.
+window: Window 객체라고 부르며 웹 브라우저 윈도우 하나 또는 탭 하나를 가리킨다.
+document: Document 객체라고 부르며 HTML 문서 전체를 가리킨다. HTML 문서에서 HTML 요소 객체를 가져오거나
+  HTML 요소를 새로 만드는 등 HTML 문서 전반에 걸친 기능을 제공한다.
+요소 객체: HTML 문서의 요소를 가리키는 객체
+  6_3_3.html
+  1. window.onload에 초기 설정 함수를 이벤트 처리기로 등록한다.
+  2. getElementById 메소도로 요소 객체를 가져온다.
+  3. 이벤트 처리기 프로퍼티에 이벤트 처리기로 동작할 함수를 등록한다.
