@@ -167,3 +167,75 @@ document: Document 객체라고 부르며 HTML 문서 전체를 가리킨다. HT
   1. window.onload에 초기 설정 함수를 이벤트 처리기로 등록한다.
   2. getElementById 메소도로 요소 객체를 가져온다.
   3. 이벤트 처리기 프로퍼티에 이벤트 처리기로 동작할 함수를 등록한다.
+
+이벤트 처리기 함수를 함수 리터럴로 직접 대입할 수도 있다.
+  6_3_3-2.html
+함수 리터럴에 이름을 붙이면 함수를 식별할 수 있게 되므로 디버깅 하기가 수월해진다.(익명함수 대신 이름을 붙여줌)
+
+이벤트 처리기 제거
+이벤트 처리기가 등록되어 있지 않은 이벤트 처리기 프로퍼티에는 기본적으로 null이 담겨있다.
+console.log(button.onkeydown); // null
+이벤트 처리기 프로퍼티에 등록한 이벤트 처리기를 제거할 때는 단순이 null을 대입한다.
+button.onclick = null;
+
+6.3.4 타이머
+웹 브라우저의 Window 객체에는 setTimeout과 setInterval 메소드가 있다.
+지정된 시간이 흐룬 후에 함수를 실행하거나 일정한 시간 간격에 따라 함수를 반복 실행할 수 있다.
+
+지정된 시간이 흐른 후에 함수 실행하기: setTimeout
+setTimeout( function() {
+  console.log(new Date());
+}, 2000);
+
+setTimeout()이 반환한 값을 clearTimeout의 인수로 넘겨서 실행하면 함수 실행이 취소된다.
+var timer = setTimeout(function() {...}, 2000);
+clearTimeout(timer);
+
+지연시간을 0밀리초로 지정하면 지정된 함수가 즉시 실행될 것 같지만 실제로는 그렇지 않다.
+현재 실행중인 이벤트 처리기의 작업이 끝나기를 기다렸다가 가능한 빨리 실행한다.
+
+지정된 시간마다 반복해서 실행하기: setInterval
+setInterval( function() {
+  console.log(new Date());
+}, 1000);
+
+setInterval()이 반환한 값을 clearInterval의 인수로 넘겨서 실행하면 함수 실행이 취소된다.
+var timer = setInterval(function() {...}, 1000);
+clearInterval(timer);
+
+setTimeout()과 setInterval의 첫 번째 인수로 문자열을 넘길 수도 있다.
+setInterval("console.log(new Date())", 1000);
+이때 지정한 문자열은 내부적으로 eval()로 평가된 후에 실행된다.
+
+
+15.1 574p 이벤트 처리기를 등록하는 방법
+15.1.1
+1. HTML 요소의 속성으로 등록하는 방법
+2. DOM 요소의 프로퍼티로 등록하는 방법
+3. addEventListener 메소드를 사용하는 방법
+
+1 의 특징
+html 문서를 읽어 들일 때 이벤트 처리기도 함께 설정하기 때문에 설정하기 쉽다.
+html과 JS 프로그램이 뒤섞여 프로그램의 가독성이 떨어진다.
+특정 요소의 특정 이벤트에 대해서 이벤트 처리기를 단 하나만 등록할 수 있다.
+그 요소에 똑같은 이벤트를 처리하는 이벤트 처리기를 등록하면 나중에 등록한 함수가 이전에 등록한 함수를 덮어쓴다.
+
+2 의 특징
+html과 JS 프로그램을 분리해서 작성할 수 있어 프로그램의 유지 보수성을 높일 수 있다.
+1과 같은 단점으로 특정 요소의 특정 이벤트에 대해서 이벤트 처리기를 단 하나만 등록할 수 있다.
+
+addEventListener로 등록한 함수는 이벤트 리스너 라는 이름으로 부른다.
+addEventListener 메소드를 이용하면 같은 요소의 같은 이벤트에 이벤트 리스너를 여러 개 등록할 수 있다.
+target.addEventListener(type, listener, useCapture);
+
+target: 이벤트 리스너를 등록할 DOM 노드
+type: 이벤트 유형을 뜻하는 문자열("click", "mouseup" 등)
+listener: 이벤트가 발생했을 때 처리를 담당하는 콜백 함수의 참조
+useCapture: 이벤트 단계
+
+useCapture는 다음 값 중 하나가 될 수 있다.
+true: 캡쳐링 단계
+false: 버블링 단계(생략했을 때의 기본값)
+  15-1-1.html
+이벤트 리스너 함수가 받는 인수 e는 이벤트 객체이며, 이벤트 객체 안에는 발생한 이벤트의 다양한 정보가 담겨 있다.
+e.currentTarger은 클릭한 요소를 참조하는 요소 객체.

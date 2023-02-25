@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		var element = document.getElementById("box");
+		element.addEventListener("click", function(e) {
+			e.currentTarget.style.backgroundColor = "red";
+		}, false);
+	};
+</script>
+
+</head>
+<body>
+	<div id="box">click me</div>
+</body>
+</html>
