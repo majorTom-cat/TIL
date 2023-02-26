@@ -48,3 +48,70 @@ huck.sayHello(); // Hello Huck
 huck.sayHello가 속한 객체는 huck이다. 즉, 실행 문맥의 디스 바인딩 컴포넌트가 가리키는 객체가
 tom에서 huck으로 바뀌었다. 따라서 this 값이 huck 객체를 가리키고 this.name 값이 "Huck"이 된다.
 함수는 객체에 묶여있지 않다.(객체가 함수를 참조할 뿐)
+
+14.2 노드 객체 가져오기
+document.getElementByID(id 값);
+document.getElementsByTagName(요소의 태그 이름. div 등); Element"s" => 복수형임에 유의. NodeList 객체를 반환하며
+NodeList 객체는 유사 배열 격체이며 읽기 전용이다.
+
+document.getElementsByClassName(class의_이름);
+document.getElementsByName(name 속성 값);
+  <input type="checkbox" name="dog" value="pome">포메라니안
+
+NodeList 객체는 '살아 있는' 상태롤 가리킴. 즉, 이 객체는 특정 시점의 정적인 상태를 표현하는 것이 아니라
+HTML 문서의 변화에 따라 동적으로 바뀜.
+NodeList 객체가 살아 있는 상태를 표현한다는 것이 때로는 편리할 수 있지만, NodeList 객체를 순회하면서
+요소를 추가해야 하는 상황에서는 주의를 기울여야 한다.
+
+14.2.5 CSS 선택자로 노드 가져오기
+다음 선택자는 class 속성 값이 "subtitle"인 p 요소와 일치한다.
+  p.subtitle // 클래스 선택자 : 특정 클래스 이름을 포함하는 요소
+525p 참고
+
+document.querySelectorAll("선택자");
+  querySelectorAll 메소드가 반환하는 NodeList는 '살아 있는 상태'가 아니다.
+  HTML 문서의 내용이 바뀌어도 querySelectorAll 메소드가 반환한 NodeList는 바뀌지 않는다.
+  또한 querySelectorAll 메소드는 일치한 요소가 없을 때 빈 NodeList를 반환한다.
+다음 코드는 class 속성값이 subtitle인 p 요소의 직계 자식 요소인 span 요소가 담긴 NodeList를 반환한다.
+  var elements = document.querySelectorAll("p.subtitle > span");
+
+querySelector 메소드는 지정한 선택자와 일치하는 요소 객체 중에 문서 위치가 첫 번째인 요소 객체를 반환
+
+14.3.3 속성 값 가져오기
+  요소 객체.getAttribute(속성의 이름)
+  14-3-3.html
+
+14.3.4 속성 값 설정하기
+  var anchor = document.getElementById("school");
+  anchor.setAttribute("href", "http://www.gilbut.co.kr/");
+
+14.3.5 속성이 있는지 확인하기
+  요소 객체.hasAttribute(속성 이름)
+  논리값을 반환
+
+14.3.6 속성 삭제하기
+  요소 객체.removeAttribute(속성 이름)
+
+14.3.7 전체 속성의 목록 가져오기
+요소 객체에는 attributes 프로퍼티가 정의되어 있다. 이 프로퍼티는 NamedNodeMap 객체로
+그 요소에 설정된 모든 속성의 속성 노드 객체가 담겨 있다. 유사 배열 객체이며 읽기 전용이다.
+NamedNodeMap 객체의 요소인 속성 노드 객체의 name프로퍼티에는 속성 이름이 담겨 있으며, value 프로퍼티에는 속성이 담겨 있다.
+  14-3-7.html
+
+  1. 한줄 선택
+Home, Shift + End
+마우스 3번 클릭
+2. 한줄 이동
+Alt + (↑,↓)
+3. 한줄 복사
+Alt + Ctrl + (↑,↓)
+4. 한줄 삭제
+Ctrl + D
+
+14.4 HTML 요소의 내용을 읽고 쓰기
+534p
+
+14.5
+14.5.2 노드 삽입하기
+543p
+졸려서 그런지 이해가 안된다. 다시 보기
