@@ -1,0 +1,50 @@
+html 요소를 동적으로 읽고 쓰기
+6.4.1 HTML 요소의 innerHTML 프로퍼티로 읽고 쓰기
+  6-4-1.html
+
+8.1.1 함수를 정의하는 방법
+1. 함수 선언문으로 정의하는 방법
+  function square(x) { return x*x; }
+
+2. 함수 리터럴로 정의하는 방법
+  var square = function(x) { return x*x; };
+
+3. Function 생성자로 정의하는 방법
+  var square = new Function("x", "return x*x");
+
+4. 화살표 함수 표현식으로 정의하는 방법
+  var square = x => x*x;
+
+2, 3, 4 의 방법으로 정의한 함수는 변수에 그 함수의 참조를 할당해야 사용할 수 있는 상태가 됨
+따라서 이 세 가지 방법으로 함수를 정의하는 코드는 호출하는 코드보다 앞에 위치해야 한다.
+
+8.2 함수 호출하기
+함수를 호출하는 여러가지 방법 참고, 정의와 동시에 실행하기, 정의하여 인수전달후 즉시 사용 등의 방법들이 있음
+
+8.3.1 인수의 생략
+function multiply(a, b) {
+  b = b || 1; // b의 초기값을 1로 설정
+  return a*b;
+}
+multiply(2, 3); // 6
+multiply(2); // 2
+논리합 연산자인 ||는 왼쪽 피연산자가 true로 평가되면 왼쪽 피연산자를 반환,
+반대로 왼쪽 피연산자가 false로 평가되면 오른쪽 피연산자를 반환
+b에 값이 들어오지 않으면 b값이 undefined이므로 false로 평가됨
+
+8.5.10 this 값
+var tom = {
+  name: "Tom",
+  sayHello: function() {
+    console.log("Hello " + this.name);
+  }
+};
+
+tom.sayHello(); // Hello tom
+var huck = { name: "Huck" };
+huck.sayHello = tom.sayHello;
+huck.sayHello(); // Hello Huck
+이 코드에서는 함수를 huck.sayHello라는 이름으로 참조해서 실행한다.
+huck.sayHello가 속한 객체는 huck이다. 즉, 실행 문맥의 디스 바인딩 컴포넌트가 가리키는 객체가
+tom에서 huck으로 바뀌었다. 따라서 this 값이 huck 객체를 가리키고 this.name 값이 "Huck"이 된다.
+함수는 객체에 묶여있지 않다.(객체가 함수를 참조할 뿐)
