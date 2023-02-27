@@ -150,3 +150,15 @@ const onChange = (e) => {
 익숙해져야할 문법
 
 onKeyPress 는 duplicate 이므로 onKeyDown 또는 onKeyUp 상황에 따라 사용
+
+기타 수업 자료
+Q: super(props)를 하는 이유?
+A: 리액트에서 클래스를 사용할 때 ( 자바도 동일 ) super()를 선언해주는데,
+이는 부모클래스를 참조하여 this 예약어를 사용 할 수 있게 해줍니다.
+객체지향언어인 자바에선 중요한 내용이니, 시간날 때 보시면 좋습니다
+리액트 super() :
+https://min9nim.github.io/2018/12/super-props/
+java super():
+http://www.tcpschool.com/java/java_inheritance_super
+
+https://www.youtube.com/watch?v=0B6D_8wX5yg
