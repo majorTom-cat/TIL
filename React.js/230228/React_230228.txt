@@ -1,0 +1,118 @@
+자바스크립트는 element를 객체로 사용
+
+리턴할땐 하나의 element로 반환!
+class 기반이기 때문에 this라는 키워드 반드시 필요
+className={
+            this.state.clicked
+              ? this.state.validated
+                ? "success"
+                : "failure"
+              : ""
+          }
+한줄로 쓰면
+className= {this.state.clicked ? this.state.validated ? "success" : "failure" : "" }
+? : 삼항연산자 혹은 조건연산자
+this.state.clicked 가 참이면 this.state.validated ? "success" : "failure"
+거짓이면 ""
+
+또
+this.state.validated 가 참이면 "success"
+거짓이면 "failure"
+
+index.html <- index.js <- App.js <- ValidationSample.js
+
+클래스의 변수는 일반 멤버와 식별하기 위해 this 사용
+
+ ref를 설정해 준 DOM에 접근하려면 this.input.current
+
+ref 다는 방법
+1. 화살표 함수. 콜백함수 형식
+	<input ref={(ref) => {this.input=ref}} />
+	ref의 이름은 원하는 것으로 자유롭게 지정할 수 있다.
+	DOM 타입과 관계없이 this.superman = ref처럼 마음대로 지정
+
+	this.input.focus(); // current 사용 안함
+2. createRef를 사용
+	 input = React.createRef();
+	<input ref={this.input} />
+
+	 handleFocus = () => {
+    this.input.current.focus();
+  }
+
+특정 컴포넌트를 외부에서 접근하는것
+// scrollBox 이름으로 접근
+<ScrollBox ref={(ref) => (this.scrollBox = ref)} />
+// scrollBox의 메소드 사용
+<button onClick={() => this.scrollBox.scrollToBottom()}>
+
+[문제] 입력 상자에 값을 입력한 다음 엔터키를 누르면 다음 상자로 이동하도록 하고
+마지막에 확인 버튼에서 엔터키를 누르면 입력 받은 값을 경고창으로 출력하는 프로그램을 작성하시오
+<처리조건>
+1. 클래스 기반으로 작성
+2. ref는 콜백함수 방식을 사용
+
+onChange = (e) => {
+    // setTimeout(() => console.log(e), 500);
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.name, ":", e.target.value);
+    console.log(this.state); // 뭔가 한 템포 늦음
+  };
+
+강사님 혹시 setstate도 스프레드연산자를 이용해 ...state로 대체가능한가요?
+가능은 하지만 모든 값을 한번에 다 바꾸는게 더 효율적일듯. ...은 이런경우 잘 쓰진 않음
+
+입력받은 값을 상태에 저장하고 상태의 값을 출력함. 이게 꼭 필요할까?
+ref를 달았기때문에 state 필요없이 다이렉트로 접근해서 입력받은 값을 가져오면 될듯
+
+state를 만들땐 목적이 있어야함. 이 컴포넌트에서 다른 컴포넌트로 넘겨서 값을 수정하고싶다면 필요함
+state 와 props
+
+클래스 / 함수형 컴포넌트 차이 :
+https://velog.io/@sdc337dc/0.%ED%81%B4%EB%9E%98%EC%8A%A4%ED%98%95-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8
+절차지향 / 객체지향 / 함수형 프로그래밍의 차이?
+https://velog.io/@majaeh43/%EC%A0%88%EC%B0%A8%EC%A7%80%ED%96%A5-%EA%B0%9D%EC%B2%B[…]%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D
+
+https://www.youtube.com/watch?v=4ezXhCuT2mw&t=273s
+
+
+미니 프로젝트 ----------------------------------
+기능 먼저 나누고 인원분배
+회원가입/로그인 기능도 프론트만 추가한다면 별 어렵지 않을듯
+객체 정보를 줄이면 백엔드 회원가입도 가능할수도(이름 나이 아이디 비번 정도만)
+
+user기능
+products 기능. 어떤 정보를 가져갈지(CRUD)
+로그인창
+사용자 정보 까진 모르겠음
+
+1. 주제 : 쉐어 마켓(C2C 기반) 쓸모없는 물건을 빌려주고 싸게 사용할 수 있는 마켓
+2. CRUD(create, read, update, delete) -> 필수(방식 : 일방향 거래 방식)
+일방향은 스테이트, 정보, 지역
+
+ 물품 : 사진, 가격, 이름, 카테고리, 지역, 수량, 날짜, 조회수, 상품설명, 게시자닉네임,
+	-Create : 사진, 가격, 지역, 날짜 ,상품 설명, 카테고리, 수량, (상품번호:hidden-백엔드)
+	-Read : 사진, 가격, 지역, 날짜 ,상품 설명, 카테고리, 수량, 닉네임, 날짜, 조회수
+
+	안하는걸로
+	api 쓰면 백엔드 안써도 될듯
+	-Update : 사진, 가격, 지역, 날짜 ,상품 설명, 카테고리, 수량, (상품번호:hidden-백엔드)
+	-Delete : 상품번호
+
+ 게시판 :
+	-Read : 물픔-사진, 가격, 제목, 날짜, 지역 -> 물품 정보 링크
+	-방식 : 무한 스크롤
+	-검색(?)/카테고리 -> 남는 시간에
+	-> Hola 처럼
+
+ 회원가입/ 로그인 기능
+
+전체 페이지
+1. 메인 페이지 => 새 글 쓰기, 로그인, 메인 게시판(상품 요약 설명 + 무한 스크롤)
+2. 새 글 쓰기 => input page( 물품 설계)
+3. 로그인, 회원가입
+4. 상세 페이지
+
+회원가입/ 로그인 모달 창으로? 카테고리 드롭다운 메뉴
+
+피그마 까지만
