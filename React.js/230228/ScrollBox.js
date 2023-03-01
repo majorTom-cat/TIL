@@ -7,6 +7,16 @@ class ScrollBox extends Component {
            다음 코드와 같은 의미입니다.
            const scrollHeight = this.box.scrollHeight;
            const clientHeight = this.box.cliengHeight;
+
+           자바스크립트로 스크롤바를 내릴 때는 DOM 노드가 가진 다음 값들을 사용합니다.
+
+• scrollTop: 세로 스크롤바 위치(0~350)
+
+• scrollHeight: 스크롤이 있는 박스 안의 div 높이(650)
+
+• clientHeight: 스크롤이 있는 박스의 높이(300)
+
+스크롤바를 맨 아래쪽으로 내리려면 scrollHeight에서 clientHeight 높이를 빼면 되겠지요?
         */
     this.box.scrollTop = scrollHeight - clientHeight;
   };
