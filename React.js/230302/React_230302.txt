@@ -1,0 +1,109 @@
+6장 map() 함수
+자바스크립트 배열 객체의 내장 함수인 map 함수를 사용하여 반복되는 컴포넌트를 렌더링할 수 있다.
+map 함수는 파라미터로 전달된 함수를 사용해서 배열 내 각 요소를 원하는 규칙에 따라 변환한 후
+그 결과로 새로운 배열을 생성
+
+arr.map(callback, [thisArg])
+이 함수의 파라미터는 다음과 같다.
+• callback: 새로운 배열의 요소를 생성하는 함수로 파라미터는 다음 세 가지다.
+- currentValue: 현재 처리하고 있는 요소
+- index: 현재 처리하고 있는 요소의 index 값
+- array: 현재 처리하고 있는 원본 배열
+• thisArg(선택 항목): callback 함수 내부에서 사용할 this 레퍼런스
+
+thisArg는 잘 안씀. [ ] 로 묶인 부분은 생략 가능
+파라미터 이름은 변경해도 상관은 없음. item, index 등 쓰기 나름. 위치값은 정해져있음
+
+JS에서는 배열을 객체 형태로 다룸
+
+콘솔에서 shift + enter 는 커서 줄바꿈
+
+react-jsx-dev-runtime.development.js:87 Warning: Each child in a list should have a unique "key" prop.
+warning이 뜨는건 각 요소들을 서로 구분할 수 있는 key 값이 필요. 자주 쓰진 않음
+key 값은 언제나 유일해야함. 데이터가 가진 고윳값을 key 값으로 설정해야한다.콜백 함수의 인수인 index 값을 사용
+고유한 값이 없을 때만 index 값을 key로 사용해야 한다.
+index를 key로 사용하면 배열이 변경될 때 효율적으로 리렌더링하지 못한다.
+
+useState
+[상태값, 상태함수] 상태값이 배열인 객체가 지정된것. names로
+
+배열에 새 항목을 추가할 때 배열의 push 함수를 사용하지 않고 concat을 사용했다.
+push 함수는 기존 배열 자체를 변경해 주는 반면, concat은 새로운 배열을 만들어 준다는 차이점이 있다.
+
+filter() 파라미터 형식
+callback
+  -currentValue
+  -index
+  -array
+thisArg
+
+배열 객체와 관련된 JS 함수들
+map()
+concat()
+filter()
+
+ 리액트에서 많은 자식 컴포넌트를 다루다 보면 map() 메서드를 반드시 접하게 되는데요,
+map을 사용하다 보면 웹 브라우저 콘솔 창에 warning 경고문이 떠있는 걸 볼 수 있습니다.
+기능이 정상 동작하는데 에는 별다른 지장이 없지만,
+리액트의 렌더링 작동원리에 대해 살펴보면 생각보다 많이 비효율적으로 동작한다는 것을 알 수 있어요.
+좀 더 깊게 파고들면 리액트의 가상 돔과도 연관이 있는 내용이지만,
+지금은 간단하게 map() 메서드를 사용할 땐 꼭 key를 지정해줘야된다 정도로만 기억하시면 될 것 같아요
+그리고, 플젝 하실 때 공식문서를 참조하시면 많은 오류를 해결 하실 수 있을거에요.
+꼭 공식문서 읽는 습관을 기르시길 바랍니다!
+https://5kdk.tistory.com/36
+https://ko.reactjs.org/docs/lists-and-keys.html
+https://ko.reactjs.org/docs/reconciliation.html#recursing-on-children
+
+삭제할 때
+onClick={() => onRemove(member.num)}랑
+onClick={onRemove(member.num)}은 어떤 차이가 있나요?
+렌더링 되는 시점이 다름
+이벤트 메서드 같은경우엔, 안에 화살표함수 형식으로 넣어주지 않으면 처음 렌더링 될때 익명함수 처럼 바로 실행됩니다
+https://blog.devgenius.io/why-it-is-necessary-to-use-arrow-functions-with-react-event-handler-e0b278710310
+단순히 작성해둔 함수를 넣을 시 이벤트 발생여부와 관계없이 실행이 1회 실행이 될 거에요
+리액트는 상태값이 바뀌면 리렌더링이 되버림. state가 바뀌었을때 리렌더링
+onClick={onRemove(member.num)} 으로 할경우 두 번 실행이 되버림. 렌더링 2회
+
+Q: onClick = { remove() } 와 onClick = { () => remove() } 둘의 차이점이 무엇인가요 ?
+A: 우선 둘은 엄연히 다른 코드입니다. onClick과 같은 이벤트 함수 같은 경우에,
+인자는 항상 함수로서 전달을 해줘야하는데요.
+화살표 함수로 표시하는 이유는, 이벤트가 발생 할 때 마다 등록해둔 해당 함수를 호출해줘 라는 뜻이기 때문입니다.
+만일 화살표 함수가 아닌 단순히 함수 명만 기재한 경우엔,
+해당 컴포넌트가 렌더링 되는 순간 함수가 바로 1회 실행하게 됩니다.
+이는 리액트의 렌더링 지식과 화살표 함수의 구조에 대해 지식을 요하기 때문에,
+관심 있으신 분들은 한번 보시는 걸 추천드립니다.
+https://blog.devgenius.io/why-it-is-necessary-to-use-arrow-functions-with-react-event-handler-e0b278710310
+https://ko.reactjs.org/docs/faq-functions.html
+
+컴포넌트는 네 가지 경우에 업데이트 된다.
+1. props가 바뀔 때
+2. state가 바뀔 때
+3. 부모 컴포넌트가 리렌더링될 때
+4. 잘 안쓰임
+
+중요한 개념
+onClick은 자동 호출 안되고 onRemove는 화살표 함수로 안쓰면 자동 호출됨. 차이가 뭘까
+파라미터 유무의 차이. onRemove(member.num) 자체가 리액트에선 직접적인 함수 호출.
+onRemove 만 있다면 함수 호출이 아니고 변수.  화살표 함수와 같은 효과. 이런 경우 자동호출되지 않음
+왜 중요하냐면
+onClick 과 onClick()
+onClick() 을 렌더링 하며 호출. 경고창 띄우고 확인버튼 누르면 setMembers(nextMembers) 호출.
+상태가 변경되며 컴포넌트 재 실행. 다시 화면 초기화 하며 onClick() 호출 반복
+
+7장 컴포넌트의 라이프사이클 메서드
+클래스형 컴포넌트에만 있음.
+함수형 컴포넌트에서는 사용할 수 없는데 그 대신에 Hooks 기능을 사용하여 비슷한 작업을 처리할 수 있지만
+정확하진 않음
+
+클래스형은 어느시점에 뭘 할지 메소드가 정확히 제공됨. 함수형은 어려움
+
+지역변수와 state 차이점. state는 언제 쓰면 좋을까
+지역변수를 화면에 출력해도 렌더링 되지 않음. 리렌더링을 해야 화면이 바뀜
+최종적으로 출력해야할 항목이 아니면 state로 만들 필요는 없음
+
+ErrorBoundary.js
+예외처리는 별도의 컴포넌트를 만들어서 처리하겠다
+
+7장 내용중 리 엔더링이 언제 일어나는지 꼭 기억. 라이프사이클도 눈이 익혀두자
+
+복습 적어도 매일 2~3시간은 해야함

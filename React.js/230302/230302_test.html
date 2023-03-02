@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	/*
+		const arr = [10, 20, 30, 40, 50];
+		// 기본 for문 방식
+		console.log("기본 for문");
+		for(let index = 0; index < arr.length ; index++) {
+			console.log(arr[index]);
+		}
+		// 향상된 for문 방식
+		console.log("\n향상된 for문");
+		for(let item of arr) {
+			console.log(item);
+		}
+		
+		// 일반 함수 형태
+		let res = arr.map(function(item, index) { // 파라미터 한 개 내지 두 개 쓰는 것이 일반적
+			console.log(index+"번 값", item);
+			return item * 10;
+		});
+		for(let item of res) {
+			console.log(item);
+		}
+		
+		
+		console.log("#################");
+		// 화살표 함수 형태
+		arr.map((item, index) => {
+			console.log(index+"번 값", item);
+		});
+	
+		
+		var numbers = [1, 2, 3, 4, 5];
+
+		var processed = numbers.map(function(num){
+		  return num * num;
+		});
+		 // var 키워드 대신 const를 사용했고, function(...){...} 대신 화살표 함수를 사용
+		const numbers = [1, 2, 3, 4, 5];
+		const result = numbers.map(num => num * num);
+		console.log(result);
+		*/
+		// filter -----------------------------------------------
+		const numbers = [1, 2, 3, 4, 5, 6];
+		console.log(numbers);
+		const biggerThanThree = numbers.filter(number => number > 3);
+		console.log(biggerThanThree);
+		
+		const guys = [
+			{ name: "YD", money: 500000 },
+			{ name: "Bill", money: 400000 },
+			{ name: "Andy", money: 300000 },
+			{ name: "Roky", money: 200000 }
+			];
+		const rich = guys.filter(man => man.money > 300000);
+		console.log(rich);
+		
+		
+		const richerMan = man => {
+			if ((man.money > 300000) && (man.name === "YD")) {
+				return true;
+			}
+			return false;
+		}
+		const richeee = guys.filter(richerMan);
+		console.log(richeee);
+			
+	</script>
+
+
+</head>
+<body>
+
+</body>
+</html>
