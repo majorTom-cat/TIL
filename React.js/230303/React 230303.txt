@@ -1,0 +1,169 @@
+useEffect는 리액트 컴포넌트가 렌더링될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook
+클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태
+
+리렌더링이 일어나는 경우
+1. props가 변경
+2. state가 변경
+3. 부모 컴포넌트가 리렌더링
+
+부모 컴포넌트에서 state를 받아도 변경 불가. state 상태변경함수도 같이 전달받으면 그 함수로 state 변경 가능
+상태함수도 props로 전달할 수 있음
+
+info가 리렌더링 될때  return () => {
+      console.log("cleanup");
+      console.log(name);
+    };
+를 수행한 뒤 리렌더링
+
+useReducer를 사용했을 때의 가장 큰 장점은 컴포넌트 업데이트 로직을 컴포넌트 바깥으로 빼낼 수 있다는 것
+App 에서도 접근, Counter에서도 접근가능한 state를 만들고싶다면.. 리덕스
+
+라이브러리나 프레임워크를 왜 이렇게 설계했는지를 이해하는 것이 아닌 받아들이는것
+어떻게 설계되있고 어떻게 사용하는지를 공부
+
+리액트 클래스형식을 배울 때 직접 state를 사용했었죠? 이는 그닥 효율적인 방식이 아니라,
+리액트 공식문서에선 useState / useReducer와 같은 간접적으로 state를 조작할 수 있는 hook 함수 사용을 권장합니다.
+useState와 useReducer 관련된 자료는 슬랙에도 올려둘테니, 이해안되는 분들은 참고하시면 좋을 것 같습니다
+https://kentcdodds.com/blog/should-i-usestate-or-usereducer
+https://www.zigae.com/state-vs-reducer/
+
+useState도 헷갈리는데, useReducer까지 이해하려 하면 힘들 수 있습니다.
+실제로 프로젝트에선 useState로 모든 기능을 구현할 수 도 있어서, 꼭 useReducer를 사용해야되는 것도 아니에요.
+다만, 코딩에서 항상 강조하는 것은 프로그램의 효율성입니다.
+보다 나은 코드를 짜기 위해 리액트에서도 계속해서 효율적인 문법들로 언어를 업데이트하고 있죠.
+새로운 기능들이 많아지는 만큼, 새로운 기술들을 배워야 할 시간이 불가피하게 많아지는데,
+코드를 무조건 외워서 배우는거 보단,
+이 기능을 왜 사용하는지에 초점을 맞춰서 공부를 하시면 프로젝트를 진행할 때 큰 도움이 될 것 같아요!
+https://www.zigae.com/state-vs-reducer/
+https://kentcdodds.com/blog/should-i-usestate-or-usereducer
+
+
+8.5 useCallback
+const Average를 렌더링 할떄마다
+const onChange = (e) => {
+    setNumber(e.target.value);
+  };
+onChange를 만들어서 대입하는 구조는 비효율적임
+seCallback은 useMemo와 상당히 비슷한 함수
+이 Hook을 사용하면 이벤트 핸들러 함수를 필요할 때만 생성할 수 있다
+
+함수를 정의하는 부분을 useCallback 함수의 첫번째 파라미터로 넣음.
+두번째는 빈 배열은 처음 랜더링시 딱 한번만 만들겠다는뜻
+onInsert는 기존의 number와 list를 조회해서 nextList를 생성하기 때문에
+배열 안에 number와 list를 꼭 넣어 주어야 한다.
+
+ref 다는법
+class 기반
+1. 콜백함수 : this.inputEl.focus();
+2. createRef() : this.inputEl.current.focus();
+
+함수 기반
+useRef() : inputEl.current.focus();
+
+9장 Sass 알아서 보기
+10장 알아서 따라가보기
+
+플리케이션을 브라우저에 불러와서 실행시킨 후에 사용자와의 인터랙션이 발생하면
+필요한 부분만 자바스크립트를 사용하여 업데이트해 줍니다.
+-> ajax -> axios
+
+yarn create react-app router-tutorial
+cd router-tutorial
+yarn add react-router-dom
+
+router-tutorial에 react-router 추가됨
+버전의 차이로 예제 방식 다른데 <BrowserRouter></BrowserRouter> 로 <App /> 감싸주기만하면됨
+이 컴포넌트는 웹 애플리케이션에 HTML5의 History API를 사용하여 페이지를 새로고침하지 않고도 주소를 변경하고,
+현재 주소에 관련된 정보를 props로 쉽게 조회하거나 사용할 수 있도록 해준다.
+
+13.2.4 Route 컴포넌트로 특정 주소에 컴포넌트 연결
+예시
+<Route path="주소규칙" component={보여 줄 컴포넌트} />
+
+App.js 에
+return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  );
+버전때문에 <div> 대신 <Routes>, componemt 대신 element 로 써야되고 컴포넌트기 때문에 {Home}이 아닌 {<Home />}
+리액트 라우터 가 작년에 V6로 업데이트가 되었었는데, 그때 문법이 조금 바뀌었습니다
+exact={true} : url이 정확히 일치할때만 실행하자는것
+
+링크를 걸어주는 a 대신 Link 컴포넌트 사용
+
+13.4 URL 파라미터와 쿼리
+유동적인 값을 사용해야 하는 상황에서 파라미터를 써야 할지 쿼리를 써야 할지 정할 때,
+무조건 따라야 하는 규칙은 없다.
+다만 일반적으로 파라미터는 특정 아이디 혹은 이름을 사용하여 조회할 때 사용하고,
+쿼리는 우리가 어떤 키워드를 검색하거나 페이지에 필요한 옵션을 전달할 때 사용한다
+파라미터 예시: /profiles/velopert
+쿼리 예시: /about?details=true&변수명=값&...
+
+Profile.js 교재와 좀 다름
+
+교재와 실제 코드의 차이를 (V5 / V6)를 쉽게 잘  정리해줬네요
+https://jforj.tistory.com/241
+리액트 라우터가 작년에 V5에서 V6으로 업데이트 하면서 새로운 기능이 추가되며 기존의 문법이 변동된 사항들이 있어요. 그래서 조금 오래된 교재를 보거나 자료를 참고해보면, 프로젝트에서는 제대로 작동하지 않는 모습을 보여줍니다. 리액트 라우터 공식문서에는 친절하게 V5 -> V6 마이그레이션 가이드를 제공합니다!
+https://reactrouter.com/en/main
+https://jforj.tistory.com/241
+
+:username 값을 읽어올때 Profile.js 의 [params.username]; 사용
+void는 임의로 정한 이름. 다른거 써도 됨
+
+velopert, void 등은 URL 파라미터. url 파라미터를 처리하기 위해 useParams 훅 사용.
+
+13.4.2 URL 쿼리
+옛날버전임. About.js 수정했음
+
+location 객체
+- search : ?를 포함하는 쿼리스트링 값
+- pathname : 현재 주소의 경로(쿼리스트링 제외)
+- hash : 주소의 # 문자열 뒤의 값
+- state : 페이지로 이동할때 임의로 넣을수 있는 상태값
+- key : location 객체의 고유값
+
+관심을 가질 부분은
+- search : ?를 포함하는 쿼리스트링 값
+- pathname : 현재 주소의 경로(쿼리스트링 제외)
+특히 search
+
+http://localhost:3000/about?q=react&name=이기자
+http://localhost:3000/about?q=react&name=%EC%9D%B4%EA%B8%B0%EC%9E%90
+? 뒤에 있는것을 쿼리스트링. 이기자 -> 인코딩한것
+
+html에서 클라이언트에서 서버로 데이터 전송할때 form 태그 썻었음
+
+About.js 에서
+useSearchParams 라는 훅을 이용해
+http://localhost:3000/about
+http://localhost:3000/about?detail=true&mode=1
+로 하면 값을 읽어옴
+객체로 만듬
+{detail: true,
+mode: 1} 을 searchParams에 저장
+ const detail = searchParams.get("detail");
+ const mode = searchParams.get("mode");
+get 기억해두자
+
+13.5 서브 라우트
+중첩 라우트
+
+<Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+
+index는 상위 라우터의 path="/"와 동일한 역할을 하는 속성
+
+브라우저의 이전페이지 다음페이지는 누구에서 결정될까
+브라우저 내장객체 history
+방문기록 -> JS 에 있는 내장 객체인 history 객체가 기억
+
+남은일정
+월요일
+14장(자바스크립트:promise)
+14장 Naver Api(axios)
+
+게시판 예제(화)
+
+줌 혹은 구글미팅으로 회의 가능
