@@ -1,0 +1,172 @@
+14장
+14.1.2 Promise
+
+axios는 내부적으로 promise를 이용하도록 설계됨
+resolve, reject 둘 다 콜백함수
+성공시 호출, 혹은 실패시 호출되는 함수들
+Promise 함수가 정상적으로 수행이 되었을때 then이 수행됨
+resolve(result) 값을 then 블럭이 파라미터로 전달받음
+async/await 짝을 이룸
+then과 async둘 중 성능의 차이는없음
+
+axios 라이브러리
+- 브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리
+- Ajax와 비슷한 방식으로 동작
+
+axios 문법
+예시)
+axios({
+  url: 'https://naver.com/list/', // 통신할 웹문서
+  method: 'get', // 통신할 방식. get이 기본값
+  data: { // 인자로 보낼 데이터
+    foo: 'dairy'
+  },
+  responseType: 'json', // default
+});
+
+axios 단축메서드
+- axios.get(url[, config])
+예시1)
+axios.get('/user?ID=12345')
+  .then(function (response) { // response에 반환값을 받고 함수 수행
+    // 성공했을 때
+    console.log(response);
+  })
+  .catch(function (error) {
+    // 에러가 났을 때
+    console.log(error);
+  })
+  .finally(function () {
+    // 항상 실행되는 함수
+  });
+
+예시2)
+axios.get('/user', {
+    params: {
+      ID=12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+
+예시3) async/await 를 쓰고 싶다면
+async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+- axios.post(url[, data[, config]]) // body에 담아서 보낼때 data 구조를 따로 명시해줘야함. 대괄호는 생략가능한 부분
+예시1)
+axios.post('/user', {
+		firstName: 'Fred',
+		lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    // response
+    console.log(response);
+  })
+  .catch(function (error) {
+    // 에러가 났을 때
+    console.log(error);
+  })
+  .finally(function () {
+    // 항상 실행되는 함수
+  });
+
+
+===================================
+
+developers.naver.com
+
+===================================
+
+동일 출처 정책 (Same-Origin Policy)
+- 두 URL의 프로토콜(protocol), 호스트(host), 포트(port)가 모두 같은 경우
+
+교차 출처 자원 공유 (CORS, Cross Origin Resource Sharing)
+- 하나의 서버에서 웹 페이지와 데이터를 모두 가져올 때는 문제가 없다.
+- 프론트엔드 서비스와 백엔드 서비스가 나뉘면서 브라우저(browser)가 프론트엔드 서비스로부터 웹 페이지, 스타일,
+  스크립트 문서를 받고, 데이터나 리소스는 백엔드 서비스로부터 직접 받으려고 할 때 동일 출처 정책을 위반한다.
+
+해결 방법중 하나는
+package.json에 "proxy": "https://newsapi.org", 추가
+
+내가 요청을 할때 주소가 로컬호스트3000. 이 주소를 https://newsapi.org 주소인것처럼 위장해서 요청하는것
+그래서 NewsList.js 에서
+const response = await axios.get(
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=f400147049fc42fdabb85e4358a386e9`,
+        );
+주소를
+`/v2/top-headlines?country=kr${query}&apiKey=f400147049fc42fdabb85e4358a386e9`
+이렇게만 해줘도 됨(프록시 설정시)
+
+프론트는 리액트. Node.js
+백은 스프링부트. 아파치 톰캣
+서버가 다름. 100% CORS 오류 발생함
+
+유선랜
+
+사진
+따로 webpack-dev-server에 대해서 직접적으로 설정을 해줄 수도 있습니다만,
+웬만하면 건들지 않는 것이 좋으니, 강사님 말씀대로 주소를 직접 사용하는 것이 좋을 것 같습니다
+
+14.7 교재는 예전 내용
+
+
+Client ID : tvtmXccfEfwQZo8GPTZR
+Client Secret : dsjjHsN93b
+
+yarn add axios
+
+package.json
+"proxy": "https://openapi.naver.com",
+
+유선랜에 경우 지정된 IP를 사용하기에, 별도의 프록시 설정이 안 먹히는 경우가 존재합니다.
+이런 경우엔 보통 프록시 미들웨어를 사용하여 처리를 해줍니다.
+수업에서 사용되는 프로젝트 예제는 CRA (Create react-app)을 기반으로 진행되기 때문에,
+서버 설정이 자동으로 되어있는 상태입니다. 프로젝트의 요구에 맞게 dev-server를 직접 구축하고 싶다면
+webpack과 관련된 자료를 알아보시면 됩니다! ( 물론 신입의 요구를 넘어서는 기술스택입니다 )
+https://juni-official.tistory.com/248
+
+난 프록시 설정을 주면 yarn start가 동작하지 않아서 다음 글을 참고했다.
+https://biio-studying.tistory.com/238
+https://velog.io/@dkdlel102/React-CORS-%EC%98%A4%EB%A5%98-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0
+setupProxy.js 를 src에 만들고 target을 api 주소로 설정했다.
+또한 package.json에  "allowedHosts": "all", 를 추가했다.
+"private": true, 를 false 로 바꿔주었지만 영향이 있는지는 모르겠다.
+
+
+const onClick = () => {
+    axios
+      .get("/api", {
+        params: {
+          query: "react", //이미지 검색 텍스트
+          start: 1, //검색 시작 위치
+          display: 5, //가져올 이미지 갯수
+          sort: "sim", //정렬 유형 (sim:유사도)
+        },
+        headers: {
+          // 이게 없으면 naver에서 요청 거부
+          "X-Naver-Client-Id": NAVER_CLIENT_ID,
+          "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
+        },
+      })
+      .then((response) => {
+        setItems(response.data.items);
+      })
+      .catch((e) => {
+        console.log("ERROR:" + e);
+      });
+  };
+잘 익혀둘것. React 에서 자주 사용하게될것임
