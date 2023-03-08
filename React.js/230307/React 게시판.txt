@@ -43,9 +43,13 @@ mysql 8 버전부터 추가된 기능.
 
 '%' 는 와일드카드. 어떤 주소도 허용하기위함
 
-caching_sha2_password
+root의 caching_sha2_password 를 native 어쩌구로 바꿔주기 위함
 
+mysql 연결이 갑자기 중단되었고 다시 연결하자 DB 자료가 다 날아감 ㅎ
+mysql DB의 로컬 위치는
 datadir=C:/ProgramData/MySQL/MySQL Server 8.0\Data
+
+다시 vscode
 
 클라이언트쪽으로 와서
 index.js에 <React.StrictMode> 주석처리
