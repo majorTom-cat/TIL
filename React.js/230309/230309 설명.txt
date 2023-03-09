@@ -1,0 +1,5 @@
+Project.zip은 수정 전.
+수정 후 반영된것들 중 src만 src 폴더에 있음
+새 프로젝트 만들어 src 만들고 Project.zip에 있는 README 보며
+패키지들 추가할 것
+yarn add react-router-dom 이랑 다른 것 하나 더 추가해야함
