@@ -1,0 +1,202 @@
+JSP기반 기존 프로젝트들이 꽤 많음. 새로 프로젝트를할땐 잘 쓰진 않음
+
+게시판 예제를 떠올려보면
+클라이언트, 서버
+
+Node.JS 에서는 express 서버 사용.
+JSP로는 Tomcat 서버 사용할것
+
+서버의 응답 형식은 HTML
+
+웹 애플리케이션에서 자동으로 생성되는 두 개의 객체
+request, response
+request 객체를 통해 클라이언트의 전송한 데이터 가져옴
+처리 결과를 전달하기 위해 response
+
+웹서버가 응답하는 정보 형식은 HTML
+
+<% %> 이런것을 script let
+
+src에
+java에는 순수 자바코드를 배치할때
+webapp엔 웹페이지 관련된 내용 배치
+
+웹 인포메이션
+WEB-INF : web.xml과 lib폴더를 배치
+web.xml : 해당 프로젝트의 web과 관련된 설정파일.
+lib : 각종 외부 라이브러리를 배치
+
+Servers 에도 web.xml 은 웹서버 전체에 적용할 설정파일
+
+java : 자바 소스파일을 배치
+webapp : 웹과 관련된 소스파일 배치(html, jsp 등)
+
+한글 인코딩할때 UTF-8이 호환성이 훨씬좋음. EUC-KR보다.
+
+<%! ... %> : 선언문
+<%@ ... %> : 지시어
+<% ... %> : 스크립틀릿(자바 코드 기술)
+<%= ... %> : 표현식. 변수를 해당 위치에 출력
+
+Calendar는 추상 클래스. getInstance() 는 static 메소드. 객체 생성 메소드
+추상클래스기 때문에 new라는 연산자로 객체 생성 불가
+
+요즘 meta 태그는
+<meta charset="utf-8">
+
+Run as -> Run on server
+
+소스보기 하면 java코드는 안보임
+
+CurrentTime.jsp => 웹서버 쪽에서는 자동으로 CurrentTime_jsp.java 만들어냄
+=> CurrentTime_jsp.class => 실행 => HTML 코드 생성
+Server에서 이루어짐
+경로
+C:\Project\JSP_Source\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\JSPTest\org\apache\jsp
+java 파일과 class 파일이 들어있음
+
+java 소스파일에 보면
+public void _jspService 메소드에 파라미터로 request, response 가 이름이 정해져있음. 톰캣이 두개 객체 만들어 파라미터로 전달함
+request : 요청과 관련된 정보(요청객체)
+response : 응답과 관련된 정보(응답객체)
+
+클라이언트에서 <form method=get/post
+request 객체에서 읽어오는것
+
+*** 내장 객체 *** 아파치 톰캣이 자동으로 생성하는 객체.
+  각각 어떤 기능을 갖고있는지 알아야함. 특히 * 친것. 언제 만들어지고 언제 소멸되는지.
+* request : 요청과 관련된 정보(요청객체)
+* response : 응답과 관련된 정보(응답객체)
+pageContext
+* session
+* application
+config
+out : 서버에서 클라이언트로 출력하는 객체
+page
+
+오류찾을때 jsp 파일 오류일수도 있고 java일수도 있음. 경로 알아야함. 자바소소를 변경하면 안되지만 참조는 해야함
+
+jsp로 만들지 않고 java파일을 직접 만들어버린다면 좀 더 빠르게 실행가능. 서블릿 파일 직접 만들어 사용 가능
+
+HTTP : Hyper Text Transfer Protocol
+html 문서를 전송할 수 있는 프로토콜
+
+get 방식은 데이터를 보낼때 header에 담음. header크기는 고정된 크기며 작음. url 형식으로.
+post방식은 body에 담음. url로 확인할수없음. 정보 보안유지시 반드시 post방식
+
+ServletTest.java 작성. web.xml 을 WEB-INF 에 넣음
+web.xml의 Source에 코드 작성함.
+<servlet-name>ServletTest</servlet-name>  안에 SetvletTest 이름은 마음대로.
+밑의 mapping과 이름 일치시키면 됨
+
+http://localhost:8800/JSPTest/test
+Setvlet 클래스를 직접 구동시킬순없음. 서버를 구동시키면 Run됨
+jsp 파일은 직접 실행 누르면 됨
+
+login.html
+action="login" 에서 확장자가 없으면 url임. 서블릿 방식으로 동작. 클래스로 했을때처럼
+
+new 에서 servlet
+Classname : LoginServlet
+
+URL mapping 수정
+/login 으로 수정함
+
+@WebServlet 은("/login")
+<servlet>
+		<servlet-name>ServletTest</servlet-name>
+		<servlet-class>ex1.ServletTest</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServletTest</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+의 역할을 한다고 보면 됨
+/login 이 들어오면 LoginServlet을 처리하도록 어노테이션으로 쓴것. 맵핑 시켜줌
+
+저 @ 문장이 없다면
+<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+이렇게 하면 됨
+@ 방식이 훨씬 심플
+
+서블릿이 변경되면 서버 새로구동
+
+Servers 에서 server.xml
+<Connector connectionTimeout="20000" port="8800" protocol="HTTP/1.1" redirectPort="8443"/>
+인코딩할때 get이냐 post냐에 따라 한글 깨질수있음 아마 utf-8이라 문제 없었을수도
+
+post일땐 한글이 깨짐. url이 변동이없음 왜냐 요청시 파라미터 정보를 body에 담아서 보내기 때문
+
+server.xml을 수정해서 GET 방식으로 전송되어 오는 파라미터들의
+캐릭터 셋을 한 번에 수정하는 방법
+• Connector 태그에 URIEncoding=“utf-8”을 추가한 후 서버 재시작
+
+<Connector connectionTimeout="20000" port="8800" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="utf-8" />
+난 또 한글 안나온다.
+
+euc-kr 을 쓸 경우
+MemRegServlet.java에
+request.setCharacterEncoding("euc-kr");
+response.setContentType("text/html;charset=euc-kr"); 해준다.
+
+utf-8을 쓰던 euc-kr 을 쓰던 한글이 잘 나오게 하려면
+
+다 euc-kr로 수정. request.setCharacterEncoding("euc-kr"); 추가
+
+다 utf-8로 수정 후 request.setCharacterEncoding("utf-8"); 하니 한글 잘 나옴
+
+get post 다 잘된다..후
+
+post 방식에선 request.setCharacterEncoding("utf-8"); 필수. 난 get에서도 넣어줬음
+
+정리하자면
+*** JSP에서 한글처리 ***
+1. server.xml 에서 아래 형식으로 수정 ( URIEncoding="utf-8" 를 추가함)
+<Connector connectionTimeout="20000" port="8800" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="utf-8" />
+
+2. html 또는 jsp 문서에서 charset="utf-8" 로 설정
+3. Servlet 클래스에서 doGet 또는 doPost에서 아래와 같이 설정
+request.setCharacterEncoding("utf-8"); // 요청받은 데이터를 읽을 때 사용할 encoding 형식
+response.setContentType("text/html;charset=utf-8"); // 응답할 데이터를 출력할때 사용할 encoding 형식
+
+server.xml 맨 밑
+<Context docBase="HTML5" path="/HTML5" reloadable="true" source="org.eclipse.jst.jee.server:HTML5"/>
+<Context docBase="TestPersonalJSP" path="/TestPersonalJSP" reloadable="true" source="org.eclipse.jst.jee.server:TestPersonalJSP"/>
+<Context docBase="JSPTest" path="/JSPTest" reloadable="true" source="org.eclipse.jst.jee.server:JSPTest"/>
+
+Run as 에서 Run on server에서 목록에 있는 갯수만큼 있음. 필요없는건 빼도 됨
+
+모든 파라미터 데이터는 기본적으로 String으로 처리됨
+
+request.setCharacterEncoding("utf-8"); // 뭘 하든 이걸 쓰는걸 습관을 들이자
+
+
+세션
+원래 요청후 응답을 받으면 둘 사이의 연결은 끊어짐
+
+http://localhost:8800/JSPTest/setName
+http://localhost:8800/JSPTest/getName
+
+쿠키삭제를 한 뒤 서버를 껏다키면 getName 을 url에 써도 name=null 이 뜸
+
+*** session *** 꼭 기억
+1. 웹서버를 새로 실행하면 기존의 세션객체는 자동으로 소멸된다.
+2. 웹브라우저를 전부 닫아버리면 새션객체는 자동으로 소멸된다.
+
+*** session 객체가 만들어지는 시점 ***
+클라이언트에서 최초로 서버에 요청할때(서버에서 자동으로 생성됨)
+
+
+왼쪽엔 menu.jsp 오른쪽엔 login.jsp
+
+최근 경향은 jsp로 개발하지는 않지만 과거 개발한 사이트는 jsp 사용. 기본적인 내용은 익혀둬야함
