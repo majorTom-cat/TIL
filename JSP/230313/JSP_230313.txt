@@ -142,7 +142,6 @@ server.xml을 수정해서 GET 방식으로 전송되어 오는 파라미터들�
 • Connector 태그에 URIEncoding=“utf-8”을 추가한 후 서버 재시작
 
 <Connector connectionTimeout="20000" port="8800" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="utf-8" />
-난 또 한글 안나온다.
 
 euc-kr 을 쓸 경우
 MemRegServlet.java에
@@ -179,6 +178,25 @@ Run as 에서 Run on server에서 목록에 있는 갯수만큼 있음. 필요�
 모든 파라미터 데이터는 기본적으로 String으로 처리됨
 
 request.setCharacterEncoding("utf-8"); // 뭘 하든 이걸 쓰는걸 습관을 들이자
+
+form_input.html 과 inputFormServerlet.java
+
+HttpServletRequest 인터페이스 이용
+ 하나의 파라미터 값이 전송되는 경우
+• String getParameter(String paramName) 메소드를 사용
+ 하나의 파라미터 이름으로 여러 개의 값이 전송되어 올 경우
+• String[ ] getParameterValues(String paramName) 메소드를 사용
+
+취미인 hobby를 배열로 받는데 3개를  선택하면 길이가 3인 배열을 request 객체가 받으니
+String h1 = request.getParameterValues("hobby")[0];
+String h2 = request.getParameterValues("hobby")[1];
+String h3 = request.getParameterValues("hobby")[2];
+String h4 = request.getParameterValues("hobby")[3];
+String h5 = request.getParameterValues("hobby")[4];
+
+이런식으로 받으면 모두 선택하지 않는이상 Index out of bound 에러가 뜸. 다른 방식으로 받아야함
+
+반복문으로 하나씩 뿌려주는 형식으로 해결
 
 
 세션
