@@ -1,0 +1,101 @@
+브라우저별로 세션이 따로 만들어짐
+
+서버를 종료하면 getName에 null이 뜨는게 맞는데 오정원 뜨는 현상이 반 이상
+웹서버가 중지되면 세션같은 상태정보들이 다 사라짐.
+
+Preferences 에서 Servers, Runtile Enviroment 에서 톰캣 삭제. 둘 다 체크. 10버전 깔아볼것. 난 안할거임
+왼쪽 Project Explorer에서 서버 삭제. 프로그램 추가제거에서도 삭제
+
+새로깔고 프로젝트 우클릭. properties, Targeted Runtimes 에서 체크
+tomcat admin port 8005
+
+9버전은 import에 javax.servlet, 10버전은 jakarta.servlet
+
+declarationTest.jsp
+
+<%!
+
+private String getStr(){ // 메소드로 만들어짐
+	str+="테스트입니다.";
+	return str;
+}
+
+private String str="선언문 ";
+%>
+선언문이므로 해당 클래스의 메소드와 필드로 만들어짐.
+에서 ! 빼면 일반 scriptlet이 되버림. jspService 메소드 내의 메소드가 있는꼴
+변수는 jspService 내에 만들어져 지역변수가 되버림
+
+requestTest1.jsp
+서블릿을 만들 필요가 없음
+난 왜 한글 안나오지
+
+.jsp 파일 body 내부에 아래의 코드를 추가했음
+<%request.setCharacterEncoding("UTF-8");%>
+get에서만 나오던 한글이 post에서도 잘 나오게됨
+
+자바스크립트에선 form 태그를 객체처럼 다룰 수 있음
+
+pageContext 객체
+forward 메소드는 url이 바뀌지 않고 이동
+
+test1 request객체를 test2에서도 사용하고싶음. 이럴경우 forward로 이동
+request를 재사용
+
+*** 세션 객체 자동 소멸 ***
+1. 웹서버를 종료했을때
+2. 웹브라우저를 모두 닫았을때
+3. 세션 만료시간이 지났을때
+
+*** 세션 객체 강제 소멸 ***
+1. session.invalidate() 를 실행했을때
+
+
+프로젝트 폴더가 하나의 어플리케이션.
+어플리케이션 객체는 하나만 만들어짐. 누구나 접근 가능
+어플리케이션 객체에 세션 아이디를 리스트로 만들어놓으면 접속자수를 알 수 있음
+
+C:\Project\JSP_Source\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JSPTest2
+
+실제 서비스 경로(java 파일)
+C:\Project\JSP_Source\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\JSPTest2\org\apache\jsp
+
+
+영역(Scope)과 속성(Attribute)
+객체가 만들어져 사용될 수 있는 범위
+
+session은 브라우저 종류에따라 각각 세션이 생성됨
+
+application 객체 내용은 브라우저를 바꿔도 그대로. session은 사라짐
+
+*** 내장 객체 영역(scope) ***
+1. request
+  - 요청이 일어난후 처리가 완료될때까지 유지. 새로운 요청에 대해서는 새로운 request 객체가 만들어진다.
+  - 단 forward나 include 를 사용하는 경우에는 기존의 request 객체를 새로운 요청에 공유한다.
+
+2. session
+  - 웹브라우저로 처음 요청시 웹서버에 새로운 세션 객체가 생성
+  - 웹브라우저 종료시 세션 객체는 자동으로 소멸된다.
+  - 웹서버 종료시나 세션 만료시간이 지나면 세션객체는 자동으로 소멸된다.
+  - 브라우저별로 세션 객체는 별도로 생성된다.
+
+3. application
+  - 웹서버 구동시 application 별로 하나의 객체가 생성되며 웹서버 종료시 해당 객체는 자동으로 소멸된다.
+
+4. pageContext
+  - 해당 요청 페이지가 실행되면서 생성이 되고 해당 페이지를 벗어나면 자동 소멸된다.
+
+attributeTest5
+<jsp:forward page="requestTest5Result.jsp"></jsp:forward>
+액션 태그 라고 부름. page로 포워딩 해줌. url변경 안됨
+
+pageContext.forward(dsasd.jsp) 와 비슷한 기능임
+
+5장 뒷부분 plugin은 요즘 잘 안써서 생략
+5장이 핵심
+
+<jsp:forward page="requestTest5Result.jsp"></jsp:forward>
+이부분떼문인데...
+이부분은 기존 패이지의 request객체가 포워딩되는 페이지에서도 그대로 사용이 가능 하기때문임.
+
+프론트 UI 설계는 리액트로도 가능하고 JSP로도 가능
